@@ -1,11 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<title>Faculty Directory</title>
+<link rel="stylesheet" href="faculty.css">
 </head>
 <body>
-    
+
+<h1>Our Faculty</h1>
+
+<!-- SEARCH BAR -->
+<div class="search-box">
+    <input type="text" id="search" placeholder="Search name or specialization..." onkeyup="searchFaculty()">
+</div>
+
+<!-- CATEGORY: PROGRAM HEAD -->
+<h2>Program Head</h2>
+<div class="faculty-container">
+
+    <!-- SAMPLE CARD -->
+    <div class="card" data-name="Dr. Maria Santos" data-spec="Curriculum Design" onclick="openModal('maria')">
+        <img src="https://photosweek.in/wp-content/uploads/anime-pfp-boy-1.jpg" alt="Faculty">
+        <h3>Ms. Jae-Ann S. Buhia</h3>
+        <p>Dean of BSIT</p>
+        <p><small>Master IT</small></p>
+        <button>Email</button>
+    </div>
+
+</div>
+
+<!-- CATEGORY: FULL-TIME -->
+<h2>Full-time Faculty</h2>
+<div class="faculty-container">
+
+    <div class="card" data-name="Prof. Juan Dela Cruz" data-spec="Mathematics" onclick="openModal('juan')">
+        <img src="https://pm1.aminoapps.com/8118/dd0635d2581b0cfa5fe143e0d41f394e58f96b34r1-736-736v2_hq.jpg" alt="Faculty">
+        <h3>Mr. Johnrel Paglinawan</h3>
+        <p>BSIT Professor</p>
+        <p><small>Master IT</small></p>
+        <button>Email</button>
+    </div>
+
+</div>
+
+<!-- CATEGORY: PART-TIME -->
+<h2>Part-time Faculty</h2>
+<div class="faculty-container">
+
+    <div class="card" data-name="Ms. Ana Rivera" data-spec="IT Programming" onclick="openModal('ana')">
+        <img src="https://e1.pxfuel.com/desktop-wallpaper/888/407/desktop-wallpaper-anime-couples-pfp.jpg" alt="Faculty">
+        <h3>Mr. Jimf Bocales</h3>
+        <p>Lecturer</p>
+        <p><small>IT Programming</small></p>
+        <button>Email</button>
+    </div>
+
+</div>
+
+<!-- MODAL PROFILE -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+
+    <!-- Profile containers -->
+    <div id="maria" class="profile">
+        <img src="https://photosweek.in/wp-content/uploads/anime-pfp-boy-1.jpg">
+        <h2>Ms. Jae-Ann S. Buhia</h2>
+        <p><strong>Position:</strong> Program Head</p>
+        <p><strong>Specialization:</strong> Master IT</p>
+        <p><strong>Email:</strong> maria@school.edu</p>
+    </div>
+
+    <div id="juan" class="profile">
+        <img src="https://pm1.aminoapps.com/8118/dd0635d2581b0cfa5fe143e0d41f394e58f96b34r1-736-736v2_hq.jpg">
+        <h2>Prof. Johnrel Paglinawan</h2>
+        <p><strong>Position:</strong> Assistant Professor</p>
+        <p><strong>Specialization:</strong> Master IT</p>
+        <p><strong>Email:</strong> juan@school.edu</p>
+    </div>
+
+    <div id="ana" class="profile">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR0aSmDPx3dskf4_ernOruGEVFvrJyHVd0Rw&s">
+        <h2>Mr. Jimf Bocales</h2>
+        <p><strong>Position:</strong> Lecturer</p>
+        <p><strong>Specialization:</strong> IT Programming</p>
+        <p><strong>Email:</strong> ana@school.edu</p>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function searchFaculty() {
+    let input = document.getElementById("search").value.toLowerCase();
+    let cards = document.getElementsByClassName("card");
+
+    for (let i = 0; i < cards.length; i++) {
+        let name = cards[i].getAttribute("data-name").toLowerCase();
+        let spec = cards[i].getAttribute("data-spec").toLowerCase();
+
+        if (name.includes(input) || spec.includes(input)) {
+            cards[i].style.display = "block";
+        } else {
+            cards[i].style.display = "none";
+        }
+    }
+}
+
+function openModal(id) {
+    document.getElementById("modal").style.display = "block";
+
+    let profiles = document.getElementsByClassName("profile");
+    for (let p of profiles) p.style.display = "none";
+
+    document.getElementById(id).style.display = "block";
+}
+
+function closeModal() {
+    document.getElementById("modal").style.display = "none";
+}
+</script>
+
 </body>
 </html>
