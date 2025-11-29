@@ -1,11 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ITTab - BSIT Department</title>
+
+    <!-- Poppins font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="CSS file/homepage.css" />
 </head>
+
 <body>
-    
+
+    <!-- ===================== TOP NAV ===================== -->
+    <header class="top-nav">
+        <div class="logo">
+            <span class="it">IT</span><span class="tab">Tab</span>
+        </div>
+
+        <button class="hamburger">&#9776;</button>
+    </header>
+
+    <!-- ===================== SECOND NAV ===================== -->
+    <nav class="section-nav">
+        <a href="#about">ABOUT</a>
+        <a href="#vision">V&M</a>
+        <a href="#goals">GOALS</a>
+        <a href="#more">MORE</a>
+    </nav>
+
+    <!-- ===================== HERO SECTION ===================== -->
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <!-- LEFT SIDE -->
+            <div class="hero-left">
+                <h1 class="hero-logo">
+                    <span class="it">IT</span><span class="tab">Tab</span>
+                </h1>
+
+                <p class="hero-desc">
+                    THE NUMBER ONE INFORMATION SOURCE FOR CEBU TECHNOLOGICAL UNIVERSITY'S BACHELOR OF SCIENCE IN INFORMATION TECHNOLOGY (BSIT) STUDENTS.
+                </p>
+            </div>
+
+            <!-- RIGHT SIDE (placeholder) -->
+            <div class="hero-right"></div>
+
+        </div>
+
+    </section>
+
+    <!-- ===================== ABOUT ===================== -->
+    <section id="about" class="page-section">
+        <h2>ABOUT US</h2>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vehicula mauris at luctus dapibus.
+        </p>
+    </section>
+
+    <!-- ===================== V&M ===================== -->
+    <section id="vision" class="page-section">
+        <h2>VISION & MISSION</h2>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porta, libero eget faucibus suscipit.
+        </p>
+    </section>
+
+    <!-- ===================== GOALS ===================== -->
+    <section id="goals" class="page-section">
+        <h2>GOALS AND OBJECTIVES</h2>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dignissim lectus id magna finibus.
+        </p>
+    </section>
+
+    <!-- ===================== MORE ===================== -->
+    <section id="more" class="page-section">
+        <h2>WHY I.T.?</h2>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel sodales nisi.
+        </p>
+    </section>
+
+    <!-- ===================== SMOOTH SCROLL ===================== -->
+    <script>
+        document.querySelectorAll('.section-nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const sec = document.querySelector(this.getAttribute('href'));
+                const offset = document.querySelector('.top-nav').offsetHeight +
+                               document.querySelector('.section-nav').offsetHeight;
+
+                const yPos = sec.getBoundingClientRect().top + window.scrollY - offset;
+                window.scrollTo({ top: yPos, behavior: "smooth" });
+            });
+        });
+    </script>
+
 </body>
 </html>
