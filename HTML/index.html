@@ -1,11 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ITTab - BSIT Department</title>
+
+    <!-- Poppins Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/homepage.css" />
 </head>
+
 <body>
-    
+
+    <!-- ===================== TOP NAVIGATION ===================== -->
+    <header class="top-nav">
+        <a href="#home" class="logo">
+    <span class="it">IT</span><span class="tab">Tab</span>
+</a>
+
+
+        <button class="hamburger">&#9776;</button>
+    </header>
+
+    <!-- ===================== SECOND NAV ===================== -->
+<nav class="section-nav">
+    <a href="#about">ABOUT</a>
+    <a href="#vision">V&M</a>
+    <a href="#goals">GOALS</a>
+    <a href="#more">MORE</a>
+    <a href="#contacts">CONTACTS</a> 
+</nav>
+
+
+    <!-- ===================== HERO SECTION ===================== -->
+    <section id="home" class="hero">
+
+
+        <!-- HERO BACKGROUND IMAGE -->
+        <div class="hero-bg"></div>
+
+        <div class="hero-content">
+
+            <div class="hero-left">
+                <h1 class="hero-logo">
+                    <span class="it">IT</span><span class="tab">Tab</span>
+                </h1>
+
+                <p class="hero-desc">
+                    THIS IS THE OFFICIAL WEBSITE OF THE INFORMATION TECHNOLOGY PROGRAM OF TABUELAN.
+                </p>
+            </div>
+
+            <div class="hero-right"></div>
+
+        </div>
+
+    </section>
+
+    <!-- ===================== ABOUT SECTION ===================== -->
+    <section id="about" class="about-section">
+        <div class="about-bg"></div>
+
+        <div class="about-content">
+            <h2 class="about-title">ABOUT <span>US</span></h2>
+
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vehicula mauris at luctus dapibus.
+            </p>
+        </div>
+    </section>
+
+    <!-- ===================== VISION & MISSION ===================== -->
+    <section id="vision" class="vm-section">
+        <div class="vm-bg"></div>
+
+        <div class="vm-content">
+            <h2 class="vm-title">VISION & MISSION</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porta libero eget faucibus suscipit.
+            </p>
+        </div>
+    </section>
+
+    <!-- ===================== GOALS ===================== -->
+
+<section id="goals" class="goals-section">
+
+    <!-- Background image -->
+    <div class="goals-bg"></div>
+
+    <!-- Right side content -->
+    <div class="goals-content">
+        <h2>GOALS AND OBJECTIVES</h2>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Sed sit amet odio vel libero dictum iaculis nec ac velit.
+            Etiam et libero et nunc.
+        </p>
+    </div>
+
+</section>
+
+
+    <!-- ===================== MORE ===================== -->
+
+<section id="more" class="more-section">
+
+    <!-- Background -->
+    <div class="more-bg"></div>
+
+    <!-- Centered Content -->
+    <div class="more-content">
+        <h2>WHY I.T.?</h2>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Donec faucibus suscipit dolor, at volutpat velit fermentum a.
+        </p>
+    </div>
+
+</section>
+
+<!-- ===================== CONTACTS SECTION ===================== -->
+<section id="contacts" class="contacts-section">
+
+    <div class="contacts-content">
+        <h2>CONTACT US</h2>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Donec faucibus suscipit dolor, at volutpat velit fermentum a.
+        </p>
+    </div>
+
+</section>
+
+
+    <!-- ===================== SMOOTH SCROLL ===================== -->
+    <script>
+        document.querySelectorAll('.section-nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+
+                const offset = document.querySelector('.top-nav').offsetHeight +
+                               document.querySelector('.section-nav').offsetHeight;
+
+                const pos = target.getBoundingClientRect().top + window.scrollY - offset;
+
+                window.scrollTo({ top: pos, behavior: "smooth" });
+            });
+        });
+    </script>
+
 </body>
 </html>

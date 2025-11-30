@@ -1,0 +1,366 @@
+/* ==========================================================
+   GLOBAL
+========================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: #0d1b2a;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* ==========================================================
+   TOP NAVBAR
+========================================================== */
+.top-nav {
+    width: 100%;
+    height: 70px;
+    background: #06121f;
+    padding: 0 30px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.45);
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 700;
+    text-decoration: none; /* remove underline */
+}
+
+
+.logo .it { color: #F2B632; font-weight: 800; }
+.logo .tab { color: white; font-weight: 800; }
+
+.hamburger {
+    background: none;
+    border: none;
+    font-size: 32px;
+    color: white;
+    cursor: pointer;
+}
+
+/* ==========================================================
+   SECOND NAVBAR
+========================================================== */
+.section-nav {
+    width: 100%;
+    height: 50px;
+    background: #102840;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+
+    position: fixed;
+    top: 70px;
+    left: 0;
+    z-index: 900;
+}
+
+.section-nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.section-nav a:hover {
+    color: #F2B632;
+}
+
+/* ==========================================================
+   HERO SECTION
+========================================================== */
+.hero {
+    width: 100%;
+    height: 100vh;
+    margin-top: 120px;
+
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+
+    background-image: url("img/school-bg.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    max-width: 1300px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 70px;
+}
+
+.hero-logo {
+    font-size: 110px;
+    font-weight: 800;
+}
+
+.hero-logo .it { color: #F2B632; }
+.hero-logo .tab { color: white; }
+
+.hero-desc {
+    margin-top: 15px;
+    max-width: 520px;
+    font-size: 14px;
+    line-height: 1.8;
+    opacity: 0.85;
+}
+
+.hero-right {
+    width: 350px;
+    height: 350px;
+    border: 2px dashed rgba(255,255,255,0.3);
+    border-radius: 10px;
+}
+
+/* ==========================================================
+   ABOUT SECTION
+========================================================== */
+.about-section {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.about-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url("img/about.png"); /* ← change if needed */
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll;
+    z-index: 0;
+    opacity: 1;
+}
+
+.about-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+
+    padding-top: 200px;
+    padding-left: 80px;
+}
+
+.about-title {
+    font-size: 80px;
+    font-weight: 800;
+    color: black;
+}
+
+.about-title span {
+    color: #F2B632;
+}
+
+.about-content p {
+    color: black;
+    font-size: 18px;
+    width: 70%;
+    margin-top: 20px;
+}
+
+/* ==========================================================
+   V&M SECTION
+========================================================== */
+.vm-section {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.vm-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url("img/vandm-bg.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    z-index: 0;
+    opacity: 1;
+}
+
+.vm-content {
+    position: relative;
+    z-index: 2;
+    padding-top: 200px;
+    padding-left: 80px;
+    max-width: 800px;
+}
+
+/* ==========================================================
+   GOALS
+========================================================== */
+
+/* GOALS (Background Image, No Parallax, Text on Right) */
+.goals-section {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* text on the RIGHT */
+    padding: 0 80px;
+
+    color: #ffffff; /* white text */
+}
+
+/* background image */
+.goals-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url("img/goals-bg.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll; /* NO PARALLAX */
+    z-index: 0;
+}
+
+/* content box on right side */
+.goals-content {
+    position: relative;
+    z-index: 2;
+    max-width: 550px;
+    text-align: right; /* align text right */
+}
+
+/* title styling (GOALS AND OBJECTIVES) */
+.goals-content h2 {
+    font-size: 40px;
+    font-weight: 800;
+    margin-bottom: 15px;
+    color: #F2B632; /* gold */
+}
+
+/* body text */
+.goals-content p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.85);
+}
+
+/* ============================================
+   MORE SECTION 
+   ============================================ */
+.more-section {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center; /* center text */
+
+    text-align: center;
+    color: #ffffff;
+    padding: 0 40px;
+}
+
+/* background image with parallax */
+.more-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url("img/more-bg.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* PARALLAX ON */
+    z-index: 0;
+}
+
+/* content box */
+.more-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+}
+
+/* title */
+.more-content h2 {
+    font-size: 42px;
+    font-weight: 800;
+    margin-bottom: 15px;
+    color: #F2B632; /* gold */
+}
+
+/* paragraph text */
+.more-content p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.9);
+}
+
+/* ============================================
+   CONTACTS SECTION 
+   ============================================ */
+.contacts-section {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    padding: 0 40px;
+    background: #0d1b2a; /* same dark theme */
+}
+
+.contacts-content {
+    max-width: 700px;
+}
+
+.contacts-content h2 {
+    font-size: 42px;
+    font-weight: 800;
+    margin-bottom: 15px;
+    color: #F2B632; /* gold */
+}
+
+.contacts-content p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.9);
+}
+
+
+/* ==========================================================
+   GENERIC FULL PAGE SECTION
+========================================================== */
+.page-section {
+    padding: 180px 80px;
+    min-height: 100vh;
+}
