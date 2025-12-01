@@ -1,157 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ITTab - BSIT Department</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ITTab - BSIT Department</title>
 
-    <!-- Poppins Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- Main CSS -->
-    <link rel="stylesheet" href="css/homepage.css" />
+  <!-- Main CSS (make sure this file is named exactly style.css and is in same folder) -->
+  <link rel="stylesheet" href="css/homepage.css">
 </head>
-
 <body>
 
-    <!-- ===================== TOP NAVIGATION ===================== -->
-    <header class="top-nav">
-        <a href="#home" class="logo">
-    <span class="it">IT</span><span class="tab">Tab</span>
-</a>
+  <!-- SIDE MENU / OVERLAY (hidden by default) -->
+  <div id="overlay" aria-hidden="true"></div>
 
+  <nav id="sideMenu" aria-hidden="true">
+    <button id="closeMenu" aria-label="Close menu">&times;</button>
+    <ul class="menu-list">
+      <li><a href="#faculty">Faculty</a></li>
+      <li><a href="#orgs">Organizations</a></li>
+      <li><a href="#announcements">Announcements</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#inquiries">Inquiries</a></li>
+      <li><a href="#Admin">Admin</a></li>
 
-        <button class="hamburger">&#9776;</button>
-    </header>
+    </ul>
+  </nav>
 
-    <!-- ===================== SECOND NAV ===================== -->
-<nav class="section-nav">
+  <!-- TOP NAVBAR -->
+  <header class="top-nav">
+    <a href="#home" class="logo" id="logo-link"><span class="it">IT</span><span class="tab">Tab</span></a>
+    <button class="hamburger" id="openMenu" aria-label="Open menu">&#9776;</button>
+  </header>
+
+  <!-- SECOND NAV -->
+  <nav class="section-nav" role="navigation">
     <a href="#about">ABOUT</a>
     <a href="#vision">V&M</a>
     <a href="#goals">GOALS</a>
     <a href="#more">MORE</a>
-    <a href="#contacts">CONTACTS</a> 
-</nav>
+    <a href="#contacts">CONTACTS</a>
+  </nav>
 
+  <!-- HERO (parallax) -->
+  <section id="home" class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
 
-    <!-- ===================== HERO SECTION ===================== -->
-    <section id="home" class="hero">
+    <div class="hero-content">
+      <div class="hero-left">
+        <h1 class="hero-logo"><span class="it">IT</span><span class="tab">Tab</span></h1>
+        <p class="hero-desc">THIS IS THE OFFICIAL WEBSITE OF THE INFORMATION TECHNOLOGY PROGRAM OF TABUELAN.</p>
+      </div>
 
+      <div class="hero-right" aria-hidden="true"></div>
+    </div>
+  </section>
 
-        <!-- HERO BACKGROUND IMAGE -->
-        <div class="hero-bg"></div>
+  <!-- ABOUT (static) -->
+  <section id="about" class="about-section">
+    <div class="about-bg" aria-hidden="true"></div>
 
-        <div class="hero-content">
+    <div class="about-content">
+      <h2 class="about-title">ABOUT <span>US</span></h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vehicula mauris at luctus dapibus.
+      </p>
+    </div>
+  </section>
 
-            <div class="hero-left">
-                <h1 class="hero-logo">
-                    <span class="it">IT</span><span class="tab">Tab</span>
-                </h1>
+  <!-- V&M (parallax) -->
+  <section id="vision" class="vm-section">
+    <div class="vm-bg" aria-hidden="true"></div>
 
-                <p class="hero-desc">
-                    THIS IS THE OFFICIAL WEBSITE OF THE INFORMATION TECHNOLOGY PROGRAM OF TABUELAN.
-                </p>
-            </div>
+    <div class="vm-content">
+      <h2 class="vm-title">VISION & MISSION</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porta, libero eget faucibus suscipit.</p>
+    </div>
+  </section>
 
-            <div class="hero-right"></div>
+  <!-- GOALS (static bg, text right) -->
+  <section id="goals" class="goals-section">
+    <div class="goals-bg" aria-hidden="true"></div>
 
-        </div>
-
-    </section>
-
-    <!-- ===================== ABOUT SECTION ===================== -->
-    <section id="about" class="about-section">
-        <div class="about-bg"></div>
-
-        <div class="about-content">
-            <h2 class="about-title">ABOUT <span>US</span></h2>
-
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vehicula mauris at luctus dapibus.
-            </p>
-        </div>
-    </section>
-
-    <!-- ===================== VISION & MISSION ===================== -->
-    <section id="vision" class="vm-section">
-        <div class="vm-bg"></div>
-
-        <div class="vm-content">
-            <h2 class="vm-title">VISION & MISSION</h2>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porta libero eget faucibus suscipit.
-            </p>
-        </div>
-    </section>
-
-    <!-- ===================== GOALS ===================== -->
-
-<section id="goals" class="goals-section">
-
-    <!-- Background image -->
-    <div class="goals-bg"></div>
-
-    <!-- Right side content -->
     <div class="goals-content">
-        <h2>GOALS AND OBJECTIVES</h2>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Sed sit amet odio vel libero dictum iaculis nec ac velit.
-            Etiam et libero et nunc.
-        </p>
+      <h2>GOALS AND OBJECTIVES</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet odio vel libero dictum iaculis nec ac velit.</p>
     </div>
+  </section>
 
-</section>
+  <!-- MORE (parallax center) -->
+  <section id="more" class="more-section">
+    <div class="more-bg" aria-hidden="true"></div>
 
-
-    <!-- ===================== MORE ===================== -->
-
-<section id="more" class="more-section">
-
-    <!-- Background -->
-    <div class="more-bg"></div>
-
-    <!-- Centered Content -->
     <div class="more-content">
-        <h2>WHY I.T.?</h2>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Donec faucibus suscipit dolor, at volutpat velit fermentum a.
-        </p>
+      <h2>WHY I.T.?</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus suscipit dolor, at volutpat velit fermentum a.</p>
     </div>
+  </section>
 
-</section>
-
-<!-- ===================== CONTACTS SECTION ===================== -->
-<section id="contacts" class="contacts-section">
-
+  <!-- CONTACTS -->
+  <section id="contacts" class="contacts-section">
     <div class="contacts-content">
-        <h2>CONTACT US</h2>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Donec faucibus suscipit dolor, at volutpat velit fermentum a.
-        </p>
+      <h2>CONTACT US</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec faucibus suscipit dolor, at volutpat velit fermentum a.</p>
     </div>
+  </section>
 
-</section>
+  <!-- Smooth scroll + menu JS -->
+  <script>
+    /* SMOOTH SCROLL (section nav) */
+    document.querySelectorAll('.section-nav a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        const offset = document.querySelector('.top-nav').offsetHeight + document.querySelector('.section-nav').offsetHeight;
+        const y = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      });
+    });
 
+    /* Hamburger open/close */
+    const openBtn = document.getElementById('openMenu');
+    const closeBtn = document.getElementById('closeMenu');
+    const sideMenu = document.getElementById('sideMenu');
+    const overlay = document.getElementById('overlay');
 
-    <!-- ===================== SMOOTH SCROLL ===================== -->
-    <script>
-        document.querySelectorAll('.section-nav a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
+    openBtn.addEventListener('click', () => {
+      sideMenu.style.right = '0';
+      overlay.style.display = 'block';
+      sideMenu.setAttribute('aria-hidden','false');
+      overlay.setAttribute('aria-hidden','false');
+    });
 
-                const offset = document.querySelector('.top-nav').offsetHeight +
-                               document.querySelector('.section-nav').offsetHeight;
+    closeBtn.addEventListener('click', closeMenu);
+    overlay.addEventListener('click', closeMenu);
 
-                const pos = target.getBoundingClientRect().top + window.scrollY - offset;
+    function closeMenu(){
+      sideMenu.style.right = '-320px';
+      overlay.style.display = 'none';
+      sideMenu.setAttribute('aria-hidden','true');
+      overlay.setAttribute('aria-hidden','true');
+    }
 
-                window.scrollTo({ top: pos, behavior: "smooth" });
-            });
-        });
-    </script>
-
+    /* Make logo also smooth-scroll */
+    document.getElementById('logo-link').addEventListener('click', function(e){
+      e.preventDefault();
+      const target = document.querySelector('#home');
+      const offset = document.querySelector('.top-nav').offsetHeight + document.querySelector('.section-nav').offsetHeight;
+      const y = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    });
+  </script>
 </body>
 </html>
