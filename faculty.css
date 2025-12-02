@@ -54,8 +54,23 @@ h1, h2 {
     text-align: center;
     transition: 0.3s;
     cursor: pointer;
+    position: relative;
 }
 
+/* ==== CATEGORY COLORS ==== */
+.card.program-head {
+    border-top: 6px solid #ff9900; /* Orange */
+}
+
+.card.full-time {
+    border-top: 6px solid #2196f3; /* Blue */
+}
+
+.card.part-time {
+    border-top: 6px solid #4caf50; /* Green */
+}
+
+/* ==== CARD IMAGE ==== */
 .card img {
     width: 100%;
     height: 220px;
