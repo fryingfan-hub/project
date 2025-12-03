@@ -4,10 +4,10 @@
   <meta charset="utf-8" />
   <title>Inquiries — ITTab</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <link rel="stylesheet" href="C:\Tiffany codes\project\project\css\inquires.css"/>
-  <!-- SweetAlert2 (for confirmations) -->
+  <link rel="stylesheet" href="css/inquires.css" />
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
+
 <body>
 
 <div class="container">
@@ -21,16 +21,18 @@
     </div>
 
     <div class="row">
-      <a href="admin.html" class="btn ghost">Admin Dashboard</a>
+      <a href="Admin.html" class="btn ghost">Admin Dashboard</a>
     </div>
   </div>
 
   <div class="form-grid">
-    <!-- LEFT: FORM -->
+
+    <!-- LEFT SIDE FORM -->
     <div class="card">
       <h3 style="margin-bottom:12px;">Send an Inquiry</h3>
 
       <form id="inquiryForm" autocomplete="off">
+        
         <div class="field">
           <label for="name">Name</label>
           <input id="name" name="name" type="text" required />
@@ -51,12 +53,6 @@
           <textarea id="message" name="message" required></textarea>
         </div>
 
-        <div class="field">
-          <label for="attachment">Attach file (optional)</label>
-          <input id="attachment" name="attachment" type="file" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg" />
-          <small class="small">Max 5MB (client-side simulated)</small>
-        </div>
-
         <div class="row space" style="margin-top:10px;">
           <div class="small">By contacting, you consent to receive a reply.</div>
           <div>
@@ -64,196 +60,93 @@
             <button type="submit" class="btn">Send</button>
           </div>
         </div>
+
       </form>
 
-      <p class="note">This demo stores inquiries in your browser (localStorage). Replace client storage with your API for production.</p>
     </div>
 
-    <!-- RIGHT: INBOX PREVIEW -->
+
+    <!-- RIGHT — Preview Inbox (demo only) -->
     <aside class="card">
-      <h4 style="margin-bottom:10px;">Admin Inbox (preview)</h4>
-      <div style="display:flex;gap:8px;align-items:center;margin-bottom:12px;">
-        <select id="filterStatus" style="padding:8px;border-radius:8px;background:#071826;color:#e6eef8;border:1px solid rgba(255,255,255,0.03);">
-          <option value="all">All statuses</option>
-          <option value="new">New</option>
-          <option value="read">Read</option>
-          <option value="replied">Replied</option>
-        </select>
-        <button id="clearStorage" class="btn ghost">Clear demo data</button>
-      </div>
-
-      <div class="inbox-list" id="inboxList"></div>
-
-      <div style="margin-top:12px;">
-        <div class="small">Click an inquiry to view details. This is the same inbox the admin dashboard reads from (localStorage).</div>
-      </div>
+      <h4 style="margin-bottom:10px;">Admin Inbox (Preview)</h4>
+      <div id="previewInbox" class="inbox-list"></div>
     </aside>
+
   </div>
 </div>
 
+
+<!-- ========================================================= -->
+<!--  CONNECT INQUIRY PAGE → ADMIN DASHBOARD                    -->
+<!-- ========================================================= -->
+
 <script>
-/* ---------- Utilities & "DB" ---------- */
-const DB_KEY = 'it_inquiries_v1';
+function sendToAdminInbox(name, email, subject, message) {
 
-// load existing or create empty
-function loadInquiries(){
-  const raw = localStorage.getItem(DB_KEY);
-  return raw ? JSON.parse(raw) : [];
-}
-function saveInquiries(list){
-  localStorage.setItem(DB_KEY, JSON.stringify(list));
-}
+    // Load admin database
+    let raw = localStorage.getItem("tabit_full");
+    let db = raw ? JSON.parse(raw) : null;
 
-/* ---------- Form handling ---------- */
-const form = document.getElementById('inquiryForm');
-const inboxList = document.getElementById('inboxList');
-const filterStatus = document.getElementById('filterStatus');
-
-function renderInbox(){
-  const all = loadInquiries();
-  const filter = filterStatus.value;
-  inboxList.innerHTML = '';
-  const list = filter === 'all' ? all.slice().reverse() : all.filter(i=>i.status===filter).slice().reverse();
-  if(list.length===0){
-    inboxList.innerHTML = '<div class="muted center" style="padding:24px;">No inquiries yet</div>';
-    return;
-  }
-  list.forEach(item=>{
-    const div = document.createElement('div');
-    div.className = 'inquiry-item ' + (item.status==='new' ? 'unread' : '');
-    div.innerHTML = `
-      <div style="flex:1;">
-        <div style="display:flex; justify-content:space-between; gap:8px;">
-          <strong>${escapeHtml(item.name)}</strong>
-          <span class="small">${new Date(item.createdAt).toLocaleString()}</span>
-        </div>
-        <div class="meta">${escapeHtml(item.subject)} &middot; <span class="small">${escapeHtml(item.email)}</span></div>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end;">
-        <div class="pill ${item.status}">${item.status.toUpperCase()}</div>
-      </div>
-    `;
-    div.onclick = ()=> openInquiryPanel(item.id);
-    inboxList.appendChild(div);
-  });
-}
-
-function escapeHtml(s){ return String(s||'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;'); }
-
-/* opens a quick detail with options */
-function openInquiryPanel(id){
-  const all = loadInquiries();
-  const item = all.find(x=>x.id===id);
-  if(!item) return;
-  // mark as read if new
-  if(item.status === 'new'){ item.status = 'read'; saveInquiries(all); renderInbox(); }
-
-  Swal.fire({
-    title: escapeHtml(item.subject),
-    html: `<strong>From:</strong> ${escapeHtml(item.name)} &lt;${escapeHtml(item.email)}&gt;<br/>
-           <strong>Message:</strong><div style="margin-top:8px;text-align:left;padding:12px;background:#071826;border-radius:8px;">${escapeHtml(item.message)}</div>
-           ${item.attachmentName ? `<div style="margin-top:10px;"><strong>Attachment:</strong> ${escapeHtml(item.attachmentName)}</div>` : ''}
-           <div style="margin-top:8px;" class="small">Status: ${item.status.toUpperCase()}</div>`,
-    showCancelButton: true,
-    confirmButtonText: 'Mark Replied',
-    cancelButtonText: 'Close',
-    showDenyButton: true,
-    denyButtonText: 'Delete'
-  }).then(res=>{
-    if(res.isConfirmed){
-      // mark replied
-      item.status = 'replied';
-      item.repliedAt = Date.now();
-      saveInquiries(all);
-      renderInbox();
-      // Simulate auto-email reply: in production call email API server-side
-      Swal.fire('Replied','Auto-reply sent (simulated)','success');
-    } else if(res.isDenied){
-      // delete
-      const idx = all.findIndex(x=>x.id===id);
-      if(idx>=0){ all.splice(idx,1); saveInquiries(all); renderInbox(); Swal.fire('Deleted','','success'); }
+    // If admin DB is missing, create it
+    if (!db) {
+        db = {
+          faculty: [],
+          orgs: [],
+          posts: [],
+          inbox: [],
+          admins: [{ username: "admin" }],
+          content: { hero:{title:"TabIT",subtitle:"Lorem ipsum"}, about:{heading:"ABOUT US",body:"..." } }
+        };
     }
-  });
+
+    // Create message
+    const newMsg = {
+        from: `${name} (${email})`,
+        subject: subject,
+        body: message,
+        date: new Date().toLocaleString()
+    };
+
+    // Add message to admin inbox
+    db.inbox.unshift(newMsg);
+
+    // Save back
+    localStorage.setItem("tabit_full", JSON.stringify(db));
+
+    Swal.fire({
+      icon: "success",
+      title: "Inquiry Sent!",
+      text: "Your message was delivered to the Admin Dashboard.",
+      timer: 2000
+    });
 }
 
-/* handle submit */
-form.addEventListener('submit', async (e)=>{
-  e.preventDefault();
-  const name = form.name.value.trim();
-  const email = form.email.value.trim();
-  const subject = form.subject.value.trim();
-  const message = form.message.value.trim();
-  const fileInput = form.attachment;
+/* ---------------------------------------------------
+   Handle Form Submit
+--------------------------------------------------- */
+document.getElementById("inquiryForm").addEventListener("submit", function(e){
+    e.preventDefault();
 
-  // simple validation
-  if(!name || !email || !subject || !message){
-    Swal.fire({ icon:'error', title:'Please fill all required fields' });
-    return;
-  }
-  if(!validateEmail(email)){
-    Swal.fire({ icon:'error', title:'Invalid email address' });
-    return;
-  }
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const subject = document.getElementById("subject").value.trim();
+    const message = document.getElementById("message").value.trim();
 
-  // handle file (client-only: just store name & size; do not store file content for large files)
-  let attachmentName = null;
-  if(fileInput.files.length){
-    const f = fileInput.files[0];
-    if(f.size > 5 * 1024 * 1024){ Swal.fire({icon:'error',title:'File too large (max 5MB)'}); return; }
-    attachmentName = f.name;
-    // Optionally: to store content (not recommended for big files), read as base64:
-    // const dataUrl = await fileToBase64(f);
-    // store dataUrl if you plan to upload to server later
-  }
+    if (!name || !email || !subject || !message) {
+      Swal.fire({icon:"error", title:"Please fill out all fields."});
+      return;
+    }
 
-  const all = loadInquiries();
-  const newItem = {
-    id: 'inq_' + Math.random().toString(36).slice(2,9),
-    name, email, subject, message,
-    status:'new',
-    attachmentName,
-    createdAt: Date.now()
-  };
-  all.push(newItem);
-  saveInquiries(all);
-
-  // success UI
-  Swal.fire({
-    icon: 'success',
-    title: 'Message sent',
-    text: 'Thank you — we received your inquiry. You will also get an auto-confirmation (simulated).',
-    timer: 2200
-  });
-
-  // auto-confirmation (simulate sending email)
-  console.log('AUTO-CONFIRM: To', email, 'subject:', `Re: ${subject}`);
-
-  form.reset();
-  renderInbox();
+    sendToAdminInbox(name, email, subject, message);
+    this.reset();
 });
 
-document.getElementById('resetBtn').onclick = ()=> form.reset();
-document.getElementById('clearStorage').onclick = ()=>{
-  if(confirm('Clear demo inquiries from localStorage?')){ localStorage.removeItem(DB_KEY); renderInbox(); }
+/* Reset Button */
+document.getElementById("resetBtn").onclick = () => {
+  document.getElementById("inquiryForm").reset();
 };
-filterStatus.onchange = renderInbox;
 
-function validateEmail(e){ return /\S+@\S+\.\S+/.test(e); }
-function fileToBase64(file){ return new Promise((res,rej)=>{ const r=new FileReader(); r.onload=()=>res(r.result); r.onerror=rej; r.readAsDataURL(file); }); }
-
-/* seed demo data if empty */
-(function seedIfEmpty(){
-  const all = loadInquiries();
-  if(all.length===0){
-    const demo = [
-      { id:'inq_demo1', name:'Alice Reyes', email:'alice@example.com', subject:'Application query', message:'How to enroll in BSIT?', status:'new', createdAt: Date.now()-1000*60*60*5 },
-      { id:'inq_demo2', name:'Mark Tan', email:'mark@example.com', subject:'Event question', message:'When is the next orientation?', status:'read', createdAt: Date.now()-1000*60*60*24 },
-      { id:'inq_demo3', name:'Liza Cruz', email:'liza@example.com', subject:'Faculty availability', message:'Can I book an appointment?', status:'replied', createdAt: Date.now()-1000*60*60*48 }
-    ];
-    saveInquiries(demo);
-  }
-  renderInbox();
-})();
 </script>
+
 </body>
 </html>

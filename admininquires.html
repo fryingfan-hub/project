@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Admin Dashboard — Inquiries</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="C:\Tiffany codes\project\project\css\inquires.css"/>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <div class="brand">
+      <div class="logo">IT</div>
+      <div>
+        <div class="title">Admin Dashboard</div>
+        <div class="subtitle">View and manage all inquiries</div>
+      </div>
+    </div>
+
+    <div class="row">
+      <a href="C:\Tiffany codes\project\project\inquires.html" class="btn ghost">Back to Inquiries</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-bottom:12px;">Inbox</h3>
+
+    <div style="display:flex;gap:8px;align-items:center;margin-bottom:12px;">
+      <select id="filterStatus" style="padding:8px;border-radius:8px;background:#071826;color:#e6eef8;border:1px solid rgba(255,255,255,0.03);">
+        <option value="all">All statuses</option>
+        <option value="new">New</option>
+        <option value="read">Read</option>
+        <option value="replied">Replied</option>
+      </select>
+      <button id="clearStorage" class="btn ghost">Clear All</button>
+    </div>
+
+    <div class="inbox-list" id="inboxList"></div>
+  </div>
+
+</div>
+
+<script>
+const DB_KEY = 'it_inquiries_v1';
+
+function loadInquiries(){ return JSON.parse(localStorage.getItem(DB_KEY) || "[]"); }
+function saveInquiries(l){ localStorage.setItem(DB_KEY, JSON.stringify(l)); }
+
+const inboxList = document.getElementById('inboxList');
+const filterStatus = document.getElementById('filterStatus');
+
+function renderInbox(){
+  const all = loadInquiries();
+  const f = filterStatus.value;
+  inboxList.innerHTML = '';
+
+  const list = f === "all"
+    ? all.slice().reverse()
+    : all.filter(i=>i.status===f).slice().reverse();
+
+  if(list.length===0){
+    inboxList.innerHTML = '<div class="muted center" style="padding:24px;">No inquiries</div>';
+    return;
+  }
+
+  list.forEach(item=>{
+    const div = document.createElement("div");
+    div.className = "inquiry-item " + (item.status === "new" ? "unread":"");
+
+    div.innerHTML = `
+      <div style="flex:1;">
+        <div style="display:flex;justify-content:space-between;">
+          <strong>${item.name}</strong>
+          <span class="small">${new Date(item.createdAt).toLocaleString()}</span>
+        </div>
+        <div class="meta">${item.subject} — <span class="small">${item.email}</span></div>
+      </div>
+      <div>
+        <span class="pill ${item.status}">${item.status.toUpperCase()}</span>
+      </div>
+    `;
+
+    div.onclick = ()=> openPanel(item.id);
+    inboxList.appendChild(div);
+  });
+}
+
+function openPanel(id){
+  const all = loadInquiries();
+  const item = all.find(x=>x.id===id);
+
+  if(item.status==="new"){
+    item.status = "read";
+    saveInquiries(all);
+    renderInbox();
+  }
+
+  Swal.fire({
+    title: item.subject,
+    html: `
+      <strong>From:</strong> ${item.name} &lt;${item.email}&gt;<br><br>
+      <strong>Message:</strong>
+      <div style="margin-top:8px;text-align:left;padding:12px;background:#071826;border-radius:8px;">${item.message}</div>
+      ${item.attachmentName ? "<br><strong>Attachment:</strong> "+item.attachmentName : ""}
+      <div style="margin-top:10px;" class="small">Status: ${item.status}</div>
+    `,
+    showCancelButton: true,
+    confirmButtonText: "Mark Replied",
+    cancelButtonText: "Close",
+    showDenyButton: true,
+    denyButtonText: "Delete"
+  }).then(res=>{
+    if(res.isConfirmed){
+      item.status = "replied";
+      saveInquiries(all);
+      renderInbox();
+      Swal.fire("Replied", "", "success");
+    }
+    else if(res.isDenied){
+      const idx = all.findIndex(x=>x.id===id);
+      if(idx>=0){
+        all.splice(idx,1);
+        saveInquiries(all);
+        renderInbox();
+        Swal.fire("Deleted","","success");
+      }
+    }
+  });
+}
+
+document.getElementById("clearStorage").onclick = ()=>{
+  localStorage.removeItem(DB_KEY);
+  renderInbox();
+};
+
+filterStatus.onchange = renderInbox;
+
+renderInbox();
+</script>
+
+</body>
+</html>
