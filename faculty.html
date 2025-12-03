@@ -5,9 +5,35 @@
 <title>Faculty Directory</title>
 <link rel="stylesheet" href="faculty.css">
 </head>
+
 <body>
 
-<h1>BSIT Faculty</h1>
+<!-- ========== OVERLAY ========== -->
+<div id="overlay" aria-hidden="true"></div>
+
+<nav class="navbar">
+    <div class="nav-left">
+        <!-- Logo inserted here -->
+        <div class="logo">
+            <span class="logo-yellow">IT</span><span class="logo-white">Tab</span>
+        </div>
+    </div>
+
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="#">FACULTY</a>
+        <a href="#">ORGS</a>
+        <a href="#">NEWS</a>
+        <a href="#">EVENTS</a>
+        <a href="#">AWARDS</a>
+        <a href="#">HELP</a>
+        <a href="Admin.html">ADMIN</a>
+    </div>
+</nav>
+
+<!-- ===== MAIN CONTENT ===== -->
+
+<h1 id="faculty">BSIT Faculty</h1>
 
 <!-- SEARCH BAR -->
 <div class="search-box">
@@ -15,10 +41,8 @@
 </div>
 
 <!-- CATEGORY: PROGRAM HEAD -->
-<h2>Program Head</h2>
+<h2 id="program-head">Program Head</h2>
 <div class="faculty-container">
-
-    <!-- SAMPLE CARD -->
     <div class="card program-head" data-name="Mrs. Jae-Ann S. Buhia" data-spec="Curriculum Design" onclick="openModal('Jae-Ann')">
         <img src="https://photosweek.in/wp-content/uploads/anime-pfp-boy-1.jpg" alt="Faculty">
         <h3>Ms. Jae-Ann S. Buhia</h3>
@@ -26,13 +50,11 @@
         <p><small>Master IT</small></p>
         <button>Email</button>
     </div>
-
 </div>
 
 <!-- CATEGORY: FULL-TIME -->
-<h2>Full-time Faculty</h2>
+<h2 id="full-time">Full-time Faculty</h2>
 <div class="faculty-container">
-
     <div class="card full-time" data-name="Mr. Johnrel Paglinawan" data-spec="Mathematics" onclick="openModal('Johnrel')">
         <img src="https://pm1.aminoapps.com/8118/dd0635d2581b0cfa5fe143e0d41f394e58f96b34r1-736-736v2_hq.jpg" alt="Faculty">
         <h3>Mr. Johnrel Paglinawan</h3>
@@ -40,11 +62,10 @@
         <p><small>Master IT</small></p>
         <button>Email</button>
     </div>
-
 </div>
 
 <!-- CATEGORY: PART-TIME -->
-<h2>Part-time Faculty</h2>
+<h2 id="part-time">Part-time Faculty</h2>
 <div class="faculty-container">
 
     <div class="card part-time" data-name="Mr. Jimf Bocales" data-spec="Web Systems and Technology" onclick="openModal('Jimf')">
@@ -63,7 +84,7 @@
         <button>Email</button>
     </div>
 
-     <div class="card part-time" data-name="John Carl Angelo Estrella" data-spec="Programming 1" onclick="openModal('Carl')">
+    <div class="card part-time" data-name="John Carl Angelo Estrella" data-spec="Programming 1" onclick="openModal('Carl')">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR0aSmDPx3dskf4_ernOruGEVFvrJyHVd0Rw&s" alt="Faculty">
         <h3>Mr. John Carl Angelo Estrella</h3>
         <p>BSIT Instructor</p>
@@ -81,12 +102,11 @@
 
 </div>
 
-<!-- MODAL PROFILE -->
+<!-- ========== MODAL ========== -->
 <div id="modal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal()">&times;</span>
 
-    <!-- Profile containers -->
     <div id="Jae-Ann" class="profile">
         <img src="https://photosweek.in/wp-content/uploads/anime-pfp-boy-1.jpg">
         <h2>Ms. Jae-Ann S. Buhia</h2>
@@ -119,7 +139,7 @@
         <p><strong>Email:</strong>leo@school.edu</p>
     </div>
 
-     <div id="Carl" class="profile">
+    <div id="Carl" class="profile">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR0aSmDPx3dskf4_ernOruGEVFvrJyHVd0Rw&s">
         <h2>Mr. John Carl Estrella</h2>
         <p><strong>Position:</strong>BSIT Instructor</p>
@@ -147,11 +167,7 @@ function searchFaculty() {
         let name = cards[i].getAttribute("data-name").toLowerCase();
         let spec = cards[i].getAttribute("data-spec").toLowerCase();
 
-        if (name.includes(input) || spec.includes(input)) {
-            cards[i].style.display = "block";
-        } else {
-            cards[i].style.display = "none";
-        }
+        cards[i].style.display = (name.includes(input) || spec.includes(input)) ? "block" : "none";
     }
 }
 
@@ -166,6 +182,20 @@ function openModal(id) {
 
 function closeModal() {
     document.getElementById("modal").style.display = "none";
+}
+
+/* ==== NAV MENU JS ==== */
+document.getElementById("menuButton").onclick = function () {
+    document.getElementById("sideMenu").classList.add("active");
+    document.getElementById("overlay").style.display = "block";
+};
+
+document.getElementById("closeMenu").onclick = closeSideMenu;
+document.getElementById("overlay").onclick = closeSideMenu;
+
+function closeSideMenu() {
+    document.getElementById("sideMenu").classList.remove("active");
+    document.getElementById("overlay").style.display = "none";
 }
 </script>
 
