@@ -1,0 +1,195 @@
+/* GENERAL THEME */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #0d1b2a; /* deep navy */
+    color: #fff;
+}
+
+/* TOP NAVBAR */
+.top-nav {
+    background: #06121f;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.6rem;
+    text-decoration: none;
+    color: #fff;
+}
+
+.it { color: #F2B632; } /* gold */
+.tab { color: #fff; }
+
+.hamburger {
+    font-size: 28px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+/* SIDE MENU */
+#sideMenu {
+    width: 280px;
+    background: #0f2a3a; /* matched dark blue */
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: -320px;
+    padding: 20px;
+    transition: 0.4s ease;
+    z-index: 200;
+}
+
+#sideMenu button {
+    font-size: 40px;
+    background: none;
+    border: none;
+    color: #F2B632; /* gold */
+    float: right;
+    cursor: pointer;
+}
+
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.55);
+    z-index: 150;
+}
+
+/* MENU LIST */
+.menu-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 60px;
+}
+
+.menu-list a {
+    display: block;
+    padding: 12px 0;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+.menu-list a:hover {
+    color: #F2B632;
+}
+
+/* SECTION TITLE */
+.section-title {
+    text-align: center;
+    font-size: 2.4rem;
+    margin: 25px 0;
+    color: #F2B632; /* gold */
+}
+
+/* FILTER */
+#yearFilter {
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+    background: #102840; /* matched theme */
+    color: #fff;
+    border: 1px solid #F2B632;
+    border-radius: 8px;
+}
+
+/* CAROUSEL */
+.carousel {
+    width: 100%;
+    max-width: 900px;
+    margin: 20px auto;
+    height: 350px;
+    overflow: hidden;
+    border-radius: 15px;
+    border: 2px solid #163555;
+    position: relative;
+}
+
+.carousel-item {
+    display: none;
+}
+
+.carousel-item.active {
+    display: block;
+}
+
+.carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.caption {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(0,0,0,0.6);
+    padding: 10px 15px;
+    border-left: 4px solid #F2B632;
+    border-radius: 8px;
+}
+
+/* GALLERY */
+.achievements-gallery {
+    max-width: 1100px;
+    margin: 40px auto;
+    display: grid;
+    gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.achievement-card {
+    background: #102840;
+    border: 1px solid #1f2e63;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+.achievement-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.achievement-card h3 {
+    color: #F2B632;
+    margin: 15px;
+}
+
+.date {
+    margin-left: 15px;
+    color: #bbb;
+}
+
+/* TIMELINE */
+.timeline {
+    max-width: 800px;
+    margin: 50px auto;
+    border-left: 3px solid #F2B632;
+    padding-left: 25px;
+}
+
+.timeline-item {
+    margin-bottom: 35px;
+}
+
+.timeline-item .circle {
+    width: 14px;
+    height: 14px;
+    background: #F2B632;
+    border-radius: 50%;
+    position: relative;
+    left: -33px;
+    top: 4px;
+}
