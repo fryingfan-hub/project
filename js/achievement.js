@@ -20,11 +20,9 @@ filter.addEventListener("change", () => {
     const year = filter.value;
 
     cards.forEach(card => {
-        if (year === "all" || card.dataset.year === year) {
-            card.style.display = "block";
-        } else {
-            card.style.display = "none";
-        }
+        card.style.display = (year === "all" || card.dataset.year === year)
+            ? "block"
+            : "none";
     });
 });
 

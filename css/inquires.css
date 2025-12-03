@@ -1,0 +1,141 @@
+/* styles.css - shared between inquiries.html and admin.html */
+
+/* ========== RESET & GLOBAL ========== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html,body { height: 100%; }
+body {
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: #071022;
+  color: #e6eef8;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.4;
+  padding: 24px;
+}
+
+/* ========== CONTAINERS ========== */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 6px 30px rgba(2,6,23,0.6);
+}
+
+/* ========== HEADER ========== */
+.header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+  margin-bottom:18px;
+}
+.brand {
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+.logo {
+  width:46px;height:46px;border-radius:8px;
+  background:linear-gradient(135deg,#F2B632,#FFDA74);
+  display:grid;place-items:center;color:#071022;font-weight:800;font-size:18px;
+}
+.title { font-size:20px; font-weight:700; letter-spacing:0.4px; }
+.subtitle { font-size:12px; color:#9fb2d1; }
+
+/* ========== FORM (INQUIRIES PAGE) ========== */
+.form-grid {
+  display:grid;
+  grid-template-columns: 1fr 360px;
+  gap:20px;
+}
+@media (max-width:900px){ .form-grid{ grid-template-columns: 1fr; } }
+
+.card {
+  background: rgba(255,255,255,0.02);
+  border-radius:10px;
+  padding:18px;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+.field { margin-bottom:12px; display:flex; flex-direction:column; }
+label { font-size:13px; color:#cfe2ff; margin-bottom:6px; font-weight:600; }
+input[type="text"], input[type="email"], textarea, input[type="file"], select {
+  background:#071826;
+  border:1px solid rgba(255,255,255,0.04);
+  color:#e6eef8;
+  padding:10px 12px;
+  border-radius:8px;
+  font-size:14px;
+  outline:none;
+}
+textarea { min-height:140px; resize:vertical; }
+input:focus, textarea:focus { box-shadow: 0 0 0 4px rgba(242,182,50,0.07); border-color:#F2B632; }
+
+/* tiny helper row */
+.row { display:flex; gap:12px; align-items:center; }
+.row.space { justify-content:space-between; }
+
+/* Buttons */
+.btn {
+  background:#F2B632;
+  color:#071022;
+  padding:10px 14px;
+  border-radius:8px;
+  border:none;
+  font-weight:700;
+  cursor:pointer;
+}
+.btn.ghost { background:transparent; color:#cfe2ff; border:1px solid rgba(255,255,255,0.04); }
+.btn.danger { background:#ff6b6b; color:white; }
+
+/* ========== INQUIRIES LIST (SIDE) ========== */
+.inbox-list { max-height:520px; overflow:auto; padding-right:6px; }
+.inquiry-item {
+  padding:10px; border-radius:8px; margin-bottom:8px; cursor:pointer;
+  display:flex; gap:10px; align-items:flex-start; border:1px solid rgba(255,255,255,0.02);
+}
+.inquiry-item.unread { background: linear-gradient(90deg, rgba(242,182,50,0.06), rgba(255,255,255,0.01)); border-left:4px solid #F2B632; }
+.inquiry-item .meta { font-size:13px; color:#bcd7f7; }
+.small { font-size:12px; color:#9fb2d1; }
+
+/* status pills */
+.pill { padding:6px 8px; border-radius:999px; font-weight:700; font-size:12px; }
+.pill.new { background:#264653; color:#a8ffdf; border:1px solid rgba(160,255,210,0.05); }
+.pill.read { background:#1b2b3a; color:#bcd7f7; }
+.pill.replied { background:#11312e; color:#b6f0d6; }
+
+/* ========== ADMIN DASHBOARD ======= */
+.grid-3 {
+  display:grid;
+  grid-template-columns: repeat(3,1fr);
+  gap:14px;
+  margin-bottom:16px;
+}
+@media (max-width:900px){ .grid-3{ grid-template-columns: 1fr; } }
+
+.card-stat { padding:18px; border-radius:10px; background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border:1px solid rgba(255,255,255,0.03); display:flex; align-items:center; gap:12px; }
+.stat-num { font-size:28px; font-weight:800; color:#F2B632; }
+.stat-label { font-size:13px; color:#cfe2ff; }
+
+/* recent activity */
+.activity { max-height:260px; overflow:auto; padding-right:6px; }
+
+/* simple table */
+.table { width:100%; border-collapse:collapse; margin-top:10px; }
+.table th, .table td { padding:10px; text-align:left; border-bottom:1px dashed rgba(255,255,255,0.03); font-size:13px; color:#dbe9ff; }
+.table th { color:#9fb2d1; font-weight:700; }
+
+/* footer small */
+.note { font-size:12px; color:#9fb2d1; margin-top:12px; }
+
+/* tiny utilities */
+.center { display:grid; place-items:center; }
+.muted { color:#9fb2d1; font-size:13px; }
+
+/* login form */
+.login-box { max-width:420px; margin:22px auto; padding:18px; border-radius:10px; }
+
+/* tiny link */
+.link { color:#F2B632; text-decoration:none; font-weight:700; }

@@ -3,11 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <title>Faculty Directory</title>
-<link rel="stylesheet" href="C:\Tiffany codes\project\project\css\faculty.css">
+
+<!-- Correct CSS path for GitHub -->
+<link rel="stylesheet" href="css/faculty.css">
+
 </head>
 <body>
 
-<h1>BSIT Faculty</h1>
+<!-- ========== OVERLAY ========== -->
+<div id="overlay"></div>
+
+<!-- ========== SIDE MENU ========== -->
+<nav id="sideMenu">
+    <button id="closeMenu">&times;</button>
+
+    <ul class="menu-list">
+        <li><a href="faculty.html">Faculty</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="event.html">Events</a></li>
+        <li><a href="achievement.html" class="active">Achievements</a></li>
+        <li><a href="inquiries.html">Inquiries</a></li>
+        <li><a href="admin.html">Admin</a></li>
+    </ul>
+</nav>
+
+<!-- ========== TOP NAV ========== -->
+<header class="top-nav">
+    <a href="index.html" class="logo">
+        <span class="it">IT</span><span class="tab">Tab</span>
+    </a>
+
+    <!-- FIXED BUTTON ID -->
+    <button class="hamburger" id="openMenu">&#9776;</button>
+</header>
+
+<!-- ===== MAIN CONTENT ===== -->
+
+<h1 id="faculty">BSIT Faculty</h1>
 
 <!-- SEARCH BAR -->
 <div class="search-box">
@@ -15,40 +47,35 @@
 </div>
 
 <!-- CATEGORY: PROGRAM HEAD -->
-<h2>Program Head</h2>
+<h2 id="program-head">Program Head</h2>
 <div class="faculty-container">
-
-    <!-- SAMPLE CARD -->
     <div class="card program-head" data-name="Mrs. Jae-Ann S. Buhia" data-spec="Curriculum Design" onclick="openModal('Jae-Ann')">
-        <img src="https://photosweek.in/wp-content/uploads/anime-pfp-boy-1.jpg" alt="Faculty">
+        <img src="C:\Tiffany codes\project\project\img\jae.jpg" alt="Faculty">
         <h3>Ms. Jae-Ann S. Buhia</h3>
         <p>Dean of BSIT</p>
         <p><small>Master IT</small></p>
         <button>Email</button>
     </div>
-
 </div>
 
 <!-- CATEGORY: FULL-TIME -->
-<h2>Full-time Faculty</h2>
+<h2 id="full-time">Full-time Faculty</h2>
 <div class="faculty-container">
-
     <div class="card full-time" data-name="Mr. Johnrel Paglinawan" data-spec="Mathematics" onclick="openModal('Johnrel')">
-        <img src="https://pm1.aminoapps.com/8118/dd0635d2581b0cfa5fe143e0d41f394e58f96b34r1-736-736v2_hq.jpg" alt="Faculty">
+        <img src="C:\Tiffany codes\project\project\img\jp.jpg" alt="Faculty">
         <h3>Mr. Johnrel Paglinawan</h3>
         <p>Assistant Professor IV</p>
         <p><small>Master IT</small></p>
         <button>Email</button>
     </div>
-
 </div>
 
 <!-- CATEGORY: PART-TIME -->
-<h2>Part-time Faculty</h2>
+<h2 id="part-time">Part-time Faculty</h2>
 <div class="faculty-container">
 
     <div class="card part-time" data-name="Mr. Jimf Bocales" data-spec="Web Systems and Technology" onclick="openModal('Jimf')">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR0aSmDPx3dskf4_ernOruGEVFvrJyHVd0Rw&s" alt="Faculty">
+        <img src="C:\Tiffany codes\project\project\img\jimf.jpg" alt="Faculty">
         <h3>Mr. Jimf Bocales</h3>
         <p>BSIT Instructor</p>
         <p><small>Master IT</small></p>
@@ -56,15 +83,15 @@
     </div>
 
     <div class="card part-time" data-name="Mr. Leonardo Albit Jr." data-spec="Data Structures and Algorithms" onclick="openModal('Leonardo')">
-        <img src="https://pm1.aminoapps.com/8118/dd0635d2581b0cfa5fe143e0d41f394e58f96b34r1-736-736v2_hq.jpg" alt="Faculty">
+        <img src="C:\Tiffany codes\project\project\img\albit.jpg" alt="Faculty">
         <h3>Mr. Leonardo Albit Jr.</h3>
         <p>BSIT Instructor</p>
         <p><small>Junior Developer</small></p>
         <button>Email</button>
     </div>
 
-     <div class="card part-time" data-name="John Carl Angelo Estrella" data-spec="Programming 1" onclick="openModal('Carl')">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR0aSmDPx3dskf4_ernOruGEVFvrJyHVd0Rw&s" alt="Faculty">
+    <div class="card part-time" data-name="John Carl Angelo Estrella" data-spec="Programming 1" onclick="openModal('Carl')">
+        <img src="C:\Tiffany codes\project\project\img\johncarl.jpg" alt="Faculty">
         <h3>Mr. John Carl Angelo Estrella</h3>
         <p>BSIT Instructor</p>
         <p><small>IT Programming</small></p>
@@ -72,7 +99,7 @@
     </div>
 
     <div class="card part-time" data-name="Ms. Alyssa Marie Paglinawan" data-spec="Programming" onclick="openModal('Alyssa')">
-        <img src="https://photosweek.in/wp-content/uploads/anime-pfp-boy-1.jpg" alt="Faculty">
+        <img src="img/alyssa.jpg" alt="Faculty">
         <h3>Mrs. Alyssa Marie Paglinawan</h3>
         <p>BSIT Instructor</p>
         <p><small>Master IT</small></p>
@@ -81,14 +108,13 @@
 
 </div>
 
-<!-- MODAL PROFILE -->
+<!-- ========== MODAL ========== -->
 <div id="modal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal()">&times;</span>
 
-    <!-- Profile containers -->
     <div id="Jae-Ann" class="profile">
-        <img src="https://photosweek.in/wp-content/uploads/anime-pfp-boy-1.jpg">
+        <img src="C:\Tiffany codes\project\project\img\jae.jpg">
         <h2>Ms. Jae-Ann S. Buhia</h2>
         <p><strong>Position:</strong>Program Head</p>
         <p><strong>Specialization:</strong>Master IT</p>
@@ -96,48 +122,49 @@
     </div>
 
     <div id="Johnrel" class="profile">
-        <img src="https://pm1.aminoapps.com/8118/dd0635d2581b0cfa5fe143e0d41f394e58f96b34r1-736-736v2_hq.jpg">
+        <img src="img/jp.jpg">
         <h2>Prof. Johnrel Paglinawan</h2>
         <p><strong>Position:</strong>Assistant Professor IV</p>
         <p><strong>Specialization:</strong>Master IT</p>
-        <p><strong>Email:</strong> juan@school.edu</p>
+        <p><strong>Email:</strong>juan@school.edu</p>
     </div>
 
     <div id="Jimf" class="profile">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR0aSmDPx3dskf4_ernOruGEVFvrJyHVd0Rw&s">
+        <img src="C:\Tiffany codes\project\project\img\jimf.jpg">
         <h2>Mr. Jimf Bocales</h2>
         <p><strong>Position:</strong>BSIT Instructor</p>
         <p><strong>Specialization:</strong>Master IT</p>
-        <p><strong>Email:</strong> ana@school.edu</p>
+        <p><strong>Email:</strong>ana@school.edu</p>
     </div>
 
     <div id="Leonardo" class="profile">
-        <img src="https://pm1.aminoapps.com/8118/dd0635d2581b0cfa5fe143e0d41f394e58f96b34r1-736-736v2_hq.jpg">
+        <img src="C:\Tiffany codes\project\project\img\albit.jpg">
         <h2>Mr. Leonardo Albit Jr.</h2>
         <p><strong>Position:</strong>BSIT Instructor</p>
         <p><strong>Specialization:</strong>Junior Developer</p>
         <p><strong>Email:</strong>leo@school.edu</p>
     </div>
 
-     <div id="Carl" class="profile">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR0aSmDPx3dskf4_ernOruGEVFvrJyHVd0Rw&s">
+    <div id="Carl" class="profile">
+        <img src="C:\Tiffany codes\project\project\img\johncarl.jpg">
         <h2>Mr. John Carl Estrella</h2>
         <p><strong>Position:</strong>BSIT Instructor</p>
         <p><strong>Specialization:</strong>IT Programming</p>
-        <p><strong>Email:</strong> ana@school.edu</p>
+        <p><strong>Email:</strong>ana@school.edu</p>
     </div>
 
     <div id="Alyssa" class="profile">
-        <img src="https://photosweek.in/wp-content/uploads/anime-pfp-boy-1.jpg">
+        <img src="C:\Tiffany codes\project\project\img\alyssa.jpg">
         <h2>Mrs. Alyssa Marie Paglinawan</h2>
         <p><strong>Position:</strong>BSIT Instructor</p>
         <p><strong>Specialization:</strong>Master IT</p>
-        <p><strong>Email:</strong> ana@school.edu</p>
+        <p><strong>Email:</strong>ana@school.edu</p>
     </div>
 
   </div>
 </div>
 
+<!-- ========== JAVASCRIPT ========== -->
 <script>
 function searchFaculty() {
     let input = document.getElementById("search").value.toLowerCase();
@@ -147,11 +174,7 @@ function searchFaculty() {
         let name = cards[i].getAttribute("data-name").toLowerCase();
         let spec = cards[i].getAttribute("data-spec").toLowerCase();
 
-        if (name.includes(input) || spec.includes(input)) {
-            cards[i].style.display = "block";
-        } else {
-            cards[i].style.display = "none";
-        }
+        cards[i].style.display = (name.includes(input) || spec.includes(input)) ? "block" : "none";
     }
 }
 
@@ -166,6 +189,20 @@ function openModal(id) {
 
 function closeModal() {
     document.getElementById("modal").style.display = "none";
+}
+
+/* ==== FIXED HAMBURGER MENU JS ==== */
+document.getElementById("openMenu").onclick = function () {
+    document.getElementById("sideMenu").style.right = "0px";
+    document.getElementById("overlay").style.display = "block";
+};
+
+document.getElementById("closeMenu").onclick = closeSideMenu;
+document.getElementById("overlay").onclick = closeSideMenu;
+
+function closeSideMenu() {
+    document.getElementById("sideMenu").style.right = "-320px";
+    document.getElementById("overlay").style.display = "none";
 }
 </script>
 
