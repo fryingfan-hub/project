@@ -6,6 +6,64 @@ body {
     color: #e0e6ed;      /* Light text */
     text-align: center;  /* Center all text globally */
 }
+/* ===== NAVBAR ===== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #004AAD;
+    padding: 10px 20px;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.logo-text {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* ===== BURGER MENU ===== */
+.burger {
+    width: 30px;
+    cursor: pointer;
+}
+
+.burger span {
+    display: block;
+    height: 4px;
+    background: white;
+    margin: 5px 0;
+    border-radius: 2px;
+    transition: 0.3s ease;
+}
+
+/* Optional: Burger animation when active */
+.burger.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.burger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.burger.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
 
 header {
     padding: 30px;
@@ -91,4 +149,37 @@ h2 {
     color: #f5c242;
     box-shadow: 0 3px 12px rgba(0,0,0,0.3);
     text-align: center; /* Center carousel text */
+}
+
+/* ===== OFFICERS SECTION ===== */
+.officer-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 30px 0;
+}
+
+.officer-card {
+    background: #10243e;
+    padding: 15px;
+    border-radius: 10px;
+    width: 160px;
+    text-align: center;
+    border: 1px solid #1e3954;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+}
+
+.officer-card img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #f5c242;
+    margin-bottom: 10px;
+}
+
+.officer-card p {
+    margin: 0;
+    color: #e0e6ed;
 }
