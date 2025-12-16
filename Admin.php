@@ -80,6 +80,7 @@
         <button data-view="cms">CMS Content</button>
         <button data-view="posts">Posts</button>
         <button data-view="inbox">Inbox</button>
+        <button onclick="window.location.href='view_inquiries.php'">All Inquiries</button>
         <button data-view="admins">Admin Users</button>
         <button data-view="settings">Settings</button>
       </nav>

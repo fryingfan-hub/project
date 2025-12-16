@@ -143,11 +143,6 @@ textarea{height:120px;resize:none}
 <body>
 
 <div class="card">
- <div style="margin-top:16px; text-align:center;">
-  <a href="index.php" class="btn primary" style="text-decoration:none;"> Home</a>
-</div>
-
-
   <div class="header">
     <div class="logo">IT</div>
     <div>

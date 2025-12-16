@@ -163,8 +163,8 @@ a { text-decoration:none; color:inherit; }
       <li><a href="studentsorganization.html">Organizations</a></li>
       <li><a href="news.html">News</a></li>
       <li><a href="achievement.html">Achievements</a></li>
-      <li><a href="inquires.html">Inquiries</a></li>
-      <li><a href="Admin.html">Admin</a></li>
+      <li><a href="inquires.php">Inquiries</a></li>
+      <li><a href="Admin.php">Admin</a></li>
 
     </ul>
   </nav>
