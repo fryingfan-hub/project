@@ -97,7 +97,7 @@ button.btn:hover, a.btn:hover{
 <body>
 
 <div class="container">
-  <a href="index.php" class="btn">Home</a>
+  <a href="Admin.php" class="btn">back</a>
 
   <!-- Clear All Form in upper-right -->
   <form method="post" class="clear-all-btn">

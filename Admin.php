@@ -51,19 +51,31 @@
   <div id="loginOverlay" class="overlay" style="display:none">
     <div class="login">
       <h2>Admin Login</h2>
-      <p class="hint">Demo credentials: <strong>admin</strong> / <strong>Admin123</strong></p>
+      
       <div style="margin-top:12px">
         <label>Username</label>
         <input id="loginUser" type="text" placeholder="admin">
       </div>
       <div style="margin-top:10px">
         <label>Password</label>
-        <input id="loginPass" type="password" placeholder="password">
+        <input style="width:100%;
+  padding:11px;
+  border:1px solid #d6dcea;
+  border-radius:6px;
+  font-size:14px;" id="loginPass" type="password" placeholder="password">
       </div>
       <div style="margin-top:14px;display:flex;gap:8px;justify-content:flex-end">
         <button id="loginBtn" class="btn">Login</button>
         <button id="demoFill" class="btn ghost">Fill Demo</button>
-        <button onclick="window.location.href='index.html'">HOME</button>
+        <button style=" padding:10px 14px;
+  border-radius:6px;
+  border:none;
+  background:#FFC300;
+  color:#0A2A5A;
+  font-weight:700;
+  cursor:pointer;  background:transparent;
+  border:1px solid #ddd;
+  color:#333;" onclick="window.location.href='index.php'">HOME</button>
       </div>
       <p id="loginError" style="color:#c33;margin-top:10px;display:none">Invalid credentials</p>
     </div>
