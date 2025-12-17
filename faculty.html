@@ -3,11 +3,292 @@
 <head>
 <meta charset="UTF-8">
 <title>Faculty Directory</title>
-
-<!-- Correct CSS path for GitHub -->
-<link rel="stylesheet" href="css/faculty.css">
-
+<link rel="stylesheet" href="faculty.css">
 </head>
+
+<style>
+    /* ============================================
+   GLOBAL STYLES
+============================================ */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #0b1c2c; /* dark navy */
+    color: #ffffff;
+}
+
+/* ============================================
+   TOP NAV (FIXED — Hamburger top right)
+============================================ */
+.top-nav {
+    width: 100%;
+    background-color: #0b1c2c;
+    border-bottom: 3px solid #f4b737;
+    padding: 15px 25px;
+
+    display: flex;
+    justify-content: space-between;  /* push logo left + menu right */
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Logo style */
+.top-nav .logo {
+    font-size: 28px;
+    font-weight: bold;
+    text-decoration: none;
+    display: flex;
+    gap: 5px;
+}
+
+.it {
+    color: #f4b737;
+    font-weight: 700;
+}
+
+.tab {
+    color: white;
+    font-weight: 500;
+}
+
+/* Hamburger Button */
+.top-nav .hamburger {
+    font-size: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ============================================
+   MOBILE SIDE MENU
+============================================ */
+#sideMenu {
+    width: 280px;
+    background: #0f2a3a;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: -320px;
+    padding: 20px;
+    transition: 0.4s ease;
+    z-index: 200;
+}
+
+#sideMenu button {
+    font-size: 40px;
+    background: none;
+    border: none;
+    color: #F2B632;
+    float: right;
+    cursor: pointer;
+}
+
+/* OVERLAY */
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.55);
+    z-index: 150;
+}
+
+/* MENU LIST */
+.menu-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 60px;
+}
+
+.menu-list a {
+    display: block;
+    padding: 12px 0;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+.menu-list a:hover {
+    color: #F2B632;
+}
+
+/* ============================================
+   HEADINGS
+============================================ */
+h1, h2 {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 20px 0;
+    color: #ffffff;
+}
+
+/* ============================================
+   SEARCH BAR
+============================================ */
+.search-box {
+    text-align: center;
+    margin: 20px 0;
+}
+
+#search {
+    width: 60%;
+    padding: 12px;
+    border-radius: 5px;
+    border: 2px solid #f4b737; /* gold */
+    background-color: #132435;
+    color: #ffffff;
+    font-size: 16px;
+    outline: none;
+}
+
+#search:focus {
+    border-color: #ffda74; /* lighter gold */
+}
+
+/* ============================================
+   FACULTY CARDS
+============================================ */
+.faculty-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.card {
+    background-color: #132435;
+    border: 2px solid #1c2c3c;
+    width: 240px;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.card h3 {
+    margin: 10px 0 5px;
+    color: #ffffff;
+}
+
+.card p {
+    margin: 3px 0;
+    color: #b5c2d1;
+}
+
+.card button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #f4b737; /* gold */
+    color: #000000;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.card button:hover {
+    background-color: #ffd66b; /* lighter gold */
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #f4b737;
+    box-shadow: 0 0 10px #f4b737;
+}
+
+/* Category top borders */
+.card.program-head { border-top: 6px solid #f4b737; }
+.card.full-time { border-top: 6px solid #4ca3ff; }
+.card.part-time { border-top: 6px solid #37cc7a; }
+
+/* ============================================
+   MODAL
+============================================ */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    overflow-y: auto;
+    padding-top: 50px;
+}
+
+.modal-content {
+    background-color: #132435;
+    margin: auto;
+    padding: 20px;
+    border: 2px solid #f4b737;
+    width: 40%;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 0 20px #f4b737;
+}
+
+.modal-content img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
+
+.modal-content h2 {
+    text-align: center;
+    margin-top: 10px;
+    color: #ffffff;
+}
+
+.profile p {
+    text-align: center;
+    font-size: 18px;
+    color: #d2d9e3;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 35px;
+    font-weight: bold;
+    color: #f4b737;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #ffffff;
+}
+</style>
+
 <body>
 
 <!-- ========== OVERLAY ========== -->
@@ -19,6 +300,7 @@
 
     <ul class="menu-list">
         <li><a href="faculty.html">Faculty</a></li>
+        <li><a href="studentsorganization.html">Organizations</a></li>
         <li><a href="news.html">News</a></li>
         <li><a href="achievement.html" class="active">Achievements</a></li>
         <li><a href="inquiries.html">Inquiries</a></li>
@@ -49,10 +331,9 @@
 <h2 id="program-head">Program Head</h2>
 <div class="faculty-container">
     <div class="card program-head" data-name="Mrs. Jae-Ann S. Buhia" data-spec="Curriculum Design" onclick="openModal('Jae-Ann')">
-        <img src="img/jae.jpg" alt="Faculty">
-        <h3>Ms. Jae-Ann S. Buhia</h3>
+        <img src="https://image2url.com/images/1765891788295-fa0a3e7a-76e2-4581-908f-291160698810.jpeg" alt="Mrs. Jae-Ann S. Buhia">
+        <h3>Mrs. Jae-Ann S. Buhia</h3>
         <p>Dean of BSIT</p>
-        <p><small>Master IT</small></p>
         <button>Email</button>
     </div>
 </div>
@@ -61,12 +342,47 @@
 <h2 id="full-time">Full-time Faculty</h2>
 <div class="faculty-container">
     <div class="card full-time" data-name="Mr. Johnrel Paglinawan" data-spec="Mathematics" onclick="openModal('Johnrel')">
-        <img src="img/jp.jpg" alt="Faculty">
+        <img src="https://image2url.com/images/1765891829843-b290773a-d1d3-4509-a822-2a41c9e4d498.jpeg" alt="Faculty">
         <h3>Mr. Johnrel Paglinawan</h3>
         <p>Assistant Professor IV</p>
-        <p><small>Master IT</small></p>
         <button>Email</button>
     </div>
+
+    <div class="card full-time" data-name="Mrs. Alyssa Marie Paglinawan" data-spec="Programming" onclick="openModal('Alyssa')">
+        <img src="https://image2url.com/images/1765891879350-090feed7-263c-4477-8cb5-9228aac05b10.jpeg" alt="Faculty">
+        <h3>Mrs. Alyssa Marie Paglinawan</h3>
+        <p>BSIT Instructor</p>
+        <button>Email</button>
+    </div>
+    
+    <div class="card full-time" data-name="Mr. John Vincent Otto" data-spec="Programming" onclick="openModal('Vincent')">
+        <img src="https://image2url.com/images/1765891924587-f339e04b-164e-4ab6-935b-17fd5512fc63.jpeg" alt="Faculty">
+        <h3>Mr. John Vincent Otto</h3>
+        <p>BSIT Instructor</p>
+        <button>Email</button>
+    </div>
+
+    <div class="card full-time" data-name="Mrs. Belinda Orquia" data-spec="Programming" onclick="openModal('Belinda')">
+        <img src="https://image2url.com/images/1765892309829-01ce169e-61ee-4c4e-819d-2d2d953d6403.jpeg" alt="Faculty">
+        <h3>Mrs. Belinda Orquia</h3>
+        <p>BSIT Instructor</p>
+        <button>Email</button>
+    </div>
+
+    <div class="card full-time" data-name="Mr. Efreim Christian Genson" data-spec="Programming" onclick="openModal('Efreim')">
+        <img src="https://image2url.com/images/1765892244773-c2019d7e-94f8-4f34-a0e8-4730eaffb000.jpeg" alt="Faculty">
+        <h3>Mr. Efreim Christian Genson</h3>
+        <p>BSIT Instructor</p>
+        <button>Email</button>
+    </div>
+
+    <div class="card full-time" data-name="Mrs. Rianne Castro" data-spec="Programming" onclick="openModal('Rianne')">
+        <img src="https://image2url.com/images/1765892192203-185716f5-6cfa-4928-a771-9cb0d694a9f6.jpeg" alt="Faculty">
+        <h3>Mrs. Rianne Castro</h3>
+        <p>BSIT Instructor</p>
+        <button>Email</button>
+    </div>
+
 </div>
 
 <!-- CATEGORY: PART-TIME -->
@@ -74,36 +390,33 @@
 <div class="faculty-container">
 
     <div class="card part-time" data-name="Mr. Jimf Bocales" data-spec="Web Systems and Technology" onclick="openModal('Jimf')">
-        <img src="img/jimf.jpg" alt="Faculty">
+        <img src="https://image2url.com/images/1765891679795-0e793b2f-336c-4e1d-a2ba-c63fcfde9f68.png" alt="Faculty">
         <h3>Mr. Jimf Bocales</h3>
         <p>BSIT Instructor</p>
-        <p><small>Master IT</small></p>
         <button>Email</button>
     </div>
 
     <div class="card part-time" data-name="Mr. Leonardo Albit Jr." data-spec="Data Structures and Algorithms" onclick="openModal('Leonardo')">
-        <img src="img/albit.jpg" alt="Faculty">
+        <img src="https://image2url.com/images/1765892371579-b00a1610-8820-4836-aa41-609d9f9560d7.jpeg" alt="Faculty">
         <h3>Mr. Leonardo Albit Jr.</h3>
         <p>BSIT Instructor</p>
-        <p><small>Junior Developer</small></p>
         <button>Email</button>
     </div>
 
-    <div class="card part-time" data-name="John Carl Angelo Estrella" data-spec="Programming 1" onclick="openModal('Carl')">
-        <img src="img/johncarl.jpg" alt="Faculty">
+    <div class="card part-time" data-name="Mr. John Carl Angelo Estrella" data-spec="Programming 1" onclick="openModal('Carl')">
+        <img src="https://image2url.com/images/1765892532484-a63e5b16-4ae5-49c2-a982-4835317b0461.jpeg" alt="Faculty">
         <h3>Mr. John Carl Angelo Estrella</h3>
         <p>BSIT Instructor</p>
-        <p><small>IT Programming</small></p>
         <button>Email</button>
     </div>
 
-    <div class="card part-time" data-name="Ms. Alyssa Marie Paglinawan" data-spec="Programming" onclick="openModal('Alyssa')">
-        <img src="img/alyssa.jpg" alt="Faculty">
-        <h3>Mrs. Alyssa Marie Paglinawan</h3>
+    <div class="card part-time" data-name="Ms. Micah Jimenez" data-spec="Programming 1" onclick="openModal('Micah')">
+        <img src="https://image2url.com/images/1765892607071-66cc6f4e-9c12-4d0d-a0da-44b56097dd47.jpeg" alt="Faculty">
+        <h3>Ms. Micah Jimenez</h3>
         <p>BSIT Instructor</p>
-        <p><small>Master IT</small></p>
         <button>Email</button>
     </div>
+
 
 </div>
 
@@ -113,51 +426,69 @@
     <span class="close" onclick="closeModal()">&times;</span>
 
     <div id="Jae-Ann" class="profile">
-        <img src="img/jae.jpg">
-        <h2>Ms. Jae-Ann S. Buhia</h2>
-        <p><strong>Position:</strong>Program Head</p>
-        <p><strong>Specialization:</strong>Master IT</p>
-        <p><strong>Email:</strong>maria@school.edu</p>
+        <img src="https://image2url.com/images/1765892046694-4485a969-5f0b-4f96-a9b1-d6c10dea1e3c.jpeg">
+        <h2>Mrs. Jae-Ann S. Buhia</h2>
+        <p><strong>Position:</strong> Dean of BSIT</p>
     </div>
 
     <div id="Johnrel" class="profile">
-        <img src="img/jp.jpg">
+        <img src="https://image2url.com/images/1765892091416-fd604aee-9fa9-42e7-9840-463ddd79a3e9.jpeg">
         <h2>Prof. Johnrel Paglinawan</h2>
-        <p><strong>Position:</strong>Assistant Professor IV</p>
-        <p><strong>Specialization:</strong>Master IT</p>
-        <p><strong>Email:</strong>juan@school.edu</p>
+        <p><strong>Position:</strong> Assistant Professor IV</p>
     </div>
 
     <div id="Jimf" class="profile">
-        <img src="img/jimf.jpg">
+        <img src="https://image2url.com/images/1765891990804-72087dd7-d1a8-4134-aaa1-879d7bd3ff6f.png">
         <h2>Mr. Jimf Bocales</h2>
-        <p><strong>Position:</strong>BSIT Instructor</p>
-        <p><strong>Specialization:</strong>Master IT</p>
-        <p><strong>Email:</strong>ana@school.edu</p>
+        <p><strong>Position:</strong> BSIT Instructor</p>
     </div>
 
     <div id="Leonardo" class="profile">
-        <img src="img/albit.jpg">
+        <img src="https://image2url.com/images/1765892371579-b00a1610-8820-4836-aa41-609d9f9560d7.jpeg">
         <h2>Mr. Leonardo Albit Jr.</h2>
-        <p><strong>Position:</strong>BSIT Instructor</p>
-        <p><strong>Specialization:</strong>Junior Developer</p>
-        <p><strong>Email:</strong>leo@school.edu</p>
+        <p><strong>Position:</strong> BSIT Instructor</p>
     </div>
 
     <div id="Carl" class="profile">
-        <img src="img/johncarl.jpg">
+        <img src="https://image2url.com/images/1765892532484-a63e5b16-4ae5-49c2-a982-4835317b0461.jpeg">
         <h2>Mr. John Carl Estrella</h2>
-        <p><strong>Position:</strong>BSIT Instructor</p>
-        <p><strong>Specialization:</strong>IT Programming</p>
-        <p><strong>Email:</strong>ana@school.edu</p>
+        <p><strong>Position:</strong> BSIT Instructor</p>
     </div>
 
     <div id="Alyssa" class="profile">
-        <img src="img/alyssa.jpg">
+        <img src="https://image2url.com/images/1765892149804-8ea5224a-28f7-42a7-8272-e353053f50b6.jpeg">
         <h2>Mrs. Alyssa Marie Paglinawan</h2>
-        <p><strong>Position:</strong>BSIT Instructor</p>
-        <p><strong>Specialization:</strong>Master IT</p>
-        <p><strong>Email:</strong>ana@school.edu</p>
+        <p><strong>Position:</strong> BSIT Instructor</p>
+    </div>
+
+    <div id="Vincent" class="profile">
+        <img src="https://image2url.com/images/1765891924587-f339e04b-164e-4ab6-935b-17fd5512fc63.jpeg">
+        <h2>Mr. John Vincent Otto</h2>
+        <p><strong>Position:</strong> BSIT Instructor</p>
+    </div>
+
+    <div id="Rianne" class="profile">
+        <img src="https://image2url.com/images/1765892192203-185716f5-6cfa-4928-a771-9cb0d694a9f6.jpeg">
+        <h2>Mrs. Rianne Castro</h2>
+        <p><strong>Position:</strong> BSIT Instructor</p>
+    </div>
+
+    <div id="Belinda" class="profile">
+        <img src="https://image2url.com/images/1765892309829-01ce169e-61ee-4c4e-819d-2d2d953d6403.jpeg">
+        <h2>Mrs. Belinda Orquia</h2>
+        <p><strong>Position:</strong> BSIT Instructor</p>
+    </div>
+
+    <div id="Efreim" class="profile">
+        <img src="https://image2url.com/images/1765892244773-c2019d7e-94f8-4f34-a0e8-4730eaffb000.jpeg">
+        <h2>Mr. Efreim Christian Genson</h2>
+        <p><strong>Position:</strong> BSIT Instructor</p>
+    </div>
+
+    <div id="Micah" class="profile">
+        <img src="https://image2url.com/images/1765892607071-66cc6f4e-9c12-4d0d-a0da-44b56097dd47.jpeg">
+        <h2>Ms. Micah Jimenez</h2>
+        <p><strong>Position:</strong> BSIT Instructor</p>
     </div>
 
   </div>
