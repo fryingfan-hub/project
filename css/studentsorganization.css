@@ -1,88 +1,219 @@
-/* General */
-body {
-    font-family: Arial, sans-serif;
+/* ===== RESET & BASE ===== */
+* {
+    box-sizing: border-box;
     margin: 0;
-    background: #f8f8f8;
-    color: #333;
+    padding: 0;
 }
 
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #0A1F44; /* Navy Blue */
+    color: #ffffff;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: linear-gradient(90deg, var(--navy), var(--navy-dark));
+}
+
+.logo {
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+.logo-yellow { color: #FFC400; }
+.logo-white { color: #fff; }
+
+.nav-links a {
+    margin-left: 18px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 2px;
+    background: var(--yellow);
+    transition: width 0.3s;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* ===== HEADER ===== */
 header {
     text-align: center;
-    padding: 30px;
-    background: #004AAD;
-    color: white;
+    padding: 40px 20px;
 }
 
-h2 {
-    text-align: center;
-    margin-top: 40px;
-}
-
-/* ===== Organization Cards ===== */
-.org-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
-    padding: 30px;
-}
-
-.org-card {
-    background: white;
-    padding: 20px;
-    text-decoration: none;
-    color: #333;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    transition: 0.3s;
-}
-
-.org-card:hover {
-    transform: translateY(-5px);
-}
-
-.org-card img {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
-    display: block;
-    margin: 0 auto 15px auto;
-}
-
-.org-card h3 {
-    text-align: center;
+header h1 {
+    font-size: 2.5rem;
+    color: #FFC400; /* Yellow */
     margin-bottom: 10px;
 }
 
-.year {
-    text-align: center;
-    font-size: 14px;
-    color: #666;
+header p {
+    font-size: 1.1rem;
+    color: #ffffff;
 }
 
-/* ===== Gallery ===== */
-.gallery-section {
-    padding: 20px 40px;
-}
-
-.gallery {
+/* ===== ORGANIZATION CARDS ===== */
+.org-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    padding: 20px 60px;
 }
 
-.gallery img {
-    width: 100%;
-    height: 150px;
+.org-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    text-decoration: none;
+    color: #0A1F44;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.org-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+}
+
+.org-card img {
+    width: 120px;
+    height: 120px;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 50%;
+    margin-bottom: 15px;
 }
 
-/* ===== Carousel ===== */
-.carousel {
-    width: 90%;
-    max-width: 700px;
-    margin: auto;
-    overflow: hidden;
-    border-radius: 10px;
-    background: #fff;
-    box-shadow: 0 3px 12
+.org-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 6px;
+}
+
+.org-card .year,
+.org-card .desc {
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+}
+
+/* ===== SECTION HEADINGS ===== */
+section h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin: 30px 0 20px;
+    color: #FFC400;
+}
+
+/* ===== CAROUSEL / ACHIEVEMENTS CENTERED ===== */
+.carousel-section {
+    text-align: center;
+    padding: 20px 60px;
+}
+
+.carousel .slides {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel .slide {
+    background: #ffffff;
+    color: #0A1F44;
+    padding: 20px 40px;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+/* ===== OFFICERS CARDS ===== */
+.officer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 25px;
+    padding: 20px 60px;
+    margin-top: 20px;
+}
+
+.officer-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    color: #0A1F44;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.officer-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+}
+
+.officer-card img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 12px;
+}
+
+.officer-card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 5px;
+}
+
+.officer-card p {
+    font-size: 0.9rem;
+    color: #555555;
+}
+
+/* ===== SOCIAL MEDIA ===== */
+.social-media {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.social-media h2 {
+    margin-bottom: 20px;
+}
+
+.social-media .links a {
+    margin: 0 12px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #FFC400;
+    transition: color 0.3s;
+}
+
+.social-media .links a:hover {
+    color: #ffffff;
+}
+
+/* ===== HR ===== */
+hr {
+    border: none;
+    height: 2px;
+    background: #FFC400;
+    margin: 30px 0;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .org-container, .officer-container, .navbar, .carousel-section {
+        padding: 20px;
+    }
+}

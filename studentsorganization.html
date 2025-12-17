@@ -4,43 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Organizations</title>
-    <link rel="stylesheet" href="C:\Tiffany codes\project\project\css\studentsorganization.css">
+    <link rel="stylesheet" href="studentsorganization.css">
 </head>
 
 <body>
+   
+    <!-- ========== OVERLAY ========== -->
+<div id="overlay" aria-hidden="true"></div>
 
-
-    <!-- ===== NAVBAR WITH LOGO + BURGER MENU ===== -->
-    <nav class="navbar">
-        <div class="nav-left">
-
-            <span class="logo-text">ITTab</span>
+<nav class="navbar">
+    <div class="nav-left">
+        <!-- Logo inserted here -->
+        <div class="logo">
+            <span class="logo-yellow">IT</span><span class="logo-white">Tab</span>
         </div>
+    </div>
 
-        <div class="nav-right">
-            <div class="burger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
+    <div class="nav-links">
+        <a href="index.html">HOME</a>
+        <a href="faculty.html">FACULTY</a>
+        <a href="studentsorganization.html">ORGS</a>
+        <a href="news">NEWS</a>
+        <a href="#">EVENTS</a>
+        <a href="#">AWARDS</a>
+        <a href="inquires.html">INQUIRIES</a>
+        <a href="Admin.html">ADMIN</a>
+    </div>
+</nav>
 
-    
-<header>
-        <h1>Philippines Society of Information Technology Students</h1>
+    <header>
+        <h1>Student Organizations</h1>
         <p>Showcasing student involvement and community</p>
     </header>
 
     <!-- ===== ORGANIZATION CARDS ===== -->
     <section class="org-container">
-
         <!-- Single Organization Card -->
         <a href="org-details.html" class="org-card">
-            <img src="c:\Users\Dell\OneDrive - Cebu Institute of Technology University\Pictures\oteks.jpg" alt="Org Logo">
+            <img src="https://image2url.com/images/1765893062842-79f2054d-4655-4d46-a296-0cd7e9c67c6e.jpg" alt="Org Logo">
             <h3>PSITS</h3>
             <p class="year">Established: 2025</p>
-            <p class="desc">A community of tech enthusiasts who explore innovation, programming, and robotics.</p>
+            <p class="desc">A community of tech enthusiasts who explore innovation and programming.</p>
         </a> 
     </section>
 
@@ -49,7 +53,6 @@
     <!-- ===== CAROUSEL OF ACHIEVEMENTS ===== -->
     <section class="carousel-section">
         <h2>Achievements</h2>
-
         <div class="carousel">
             <div class="slides">
                 <div class="slide">Creation of PSITS Officers</div>
@@ -59,52 +62,50 @@
 
     <hr>
 
-    <!-- ===== Present OFFICERS ===== -->
+    <!-- ===== PRESENT OFFICERS (WITH PROFILE PICS) ===== -->
     <section class="officers">
         <h2>PSITS Officers</h2>
-
-        <div class="officer-list">
-
+        <div class="officer-container">
             <div class="officer-card">
-                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAJQArQMBIgACEQEDEQH/xAAbAAEAAgMBAQAAAAAAAAAAAAAABQYBAwQCB//EAC8QAQACAgEBBwIFBAMAAAAAAAABAgMEETEFEiFBUWFxIjITI1KBsUJykZIUQ2L/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A+iAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMxEzPERM/CR0uy7ZIi+fmtPKsdZS2LBiwxxipFfgFdjV2JjmMGX/AFl5vhzUjm+K9Y9ZrK0gKkLFs6GHPH2923lavghNvUy6uTi/jWelo8waAAAAAAAAAAAAAAEl2Rpxln8e/wBtZ+mPf1R1aza0VjrM8LRgx1xYq46x4VjgGwAAABrz4aZsdqZI5rLYAq+zhtr5rY7eXSfWPVqTPbeGJxUzRHjWeJ+EMAAAAAAAAAAAADfox3tzDE9O/H7rMq+pf8PaxWnpF4WgAAAAAAHL2lETo5efKOVcWHtW8V0ckfq4qrwAAAAAAAAAAAAHHusnZ+xGxrVt/VHhaPeFbdGjtzq5eetJ+6AWUeMWWmWkXx2i1Z83sAAAHFv71danFfqyz0j095BxdtZ4tkrgrP2/Vb5RjM2m9ptaeZmeZn1YAAAAAAAAAAAAAABu1tnLr272O3zWekpTD2vitHGas0n1jxhCkVtafpiZ+PEFkrv6tumev7+Dxk7S1K/9sWn0rHKDjW2J6YMvH9kvNsOWn3YslY96yCQ2e1r2iY169z/1bqjbTa1u9a02t5zPmxyAAAAAAAAAAAAAAAN+tqZtmfyq/T52nwh2aHZk37uXYiYr1inr8pitYrWK1iIiOkQDgwdlYcfE5ZnJb38Id1MdKRxStax7Q9gBwANObVwZo/MxVn34Ruz2RMc217cx+mev+UwAql6Wx3mt4mto8ph5Wba1sezSa5a/Ex1hA7mpk1cnFvGs/bb1BzgAAAAAAAAAJTsvR73GfNHh/RWf5cvZ2t/ys8RMfl18be/ssURERxHSAZAAAAAAAAa82KmbHNMkc1lsAVnc1rauaaT4161n1hoWTe1Y2sM08O9HjWfSVcmJraa2jiYnxBgAAAAAAG3Vp+Ls48f6rQCc7MwRg1a8x9VvGzsYiOGQAAAAAAAAAAJ6IPtnBGPPGWvTJ1+U44u1sff0rzxHNPqgFfAAAAAAdfZMc7+P2738ACxAAAAAAAAAAAANW3HOrmifOk/wAKuAAAD/2Q==" alt="Adviser">
-                <p><strong>Mrs. Jae-Ann Buhia</strong><br>Adviser (2025)</p>
+                <img src="https://image2url.com/images/1765892046694-4485a969-5f0b-4f96-a9b1-d6c10dea1e3c.jpeg" alt="Adviser">
+                <h3>Mrs. Jae-Ann Buhia</h3>
+                <p>Adviser (2025)</p>
             </div>
-
             <div class="officer-card">
-                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAJQArQMBIgACEQEDEQH/xAAbAAEAAgMBAQAAAAAAAAAAAAAABQYBAwQCB//EAC8QAQACAgEBBwIFBAMAAAAAAAABAgMEETEFEiFBUWFxIjITI1KBsUJykZIUQ2L/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A+iAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMxEzPERM/CR0uy7ZIi+fmtPKsdZS2LBiwxxipFfgFdjV2JjmMGX/AFl5vhzUjm+K9Y9ZrK0gKkLFs6GHPH2923lavghNvUy6uTi/jWelo8waAAAAAAAAAAAAAAEl2Rpxln8e/wBtZ+mPf1R1aza0VjrM8LRgx1xYq46x4VjgGwAAABrz4aZsdqZI5rLYAq+zhtr5rY7eXSfWPVqTPbeGJxUzRHjWeJ+EMAAAAAAAAAAAADfox3tzDE9O/H7rMq+pf8PaxWnpF4WgAAAAAAHL2lETo5efKOVcWHtW8V0ckfq4qrwAAAAAAAAAAAAHHusnZ+xGxrVt/VHhaPeFbdGjtzq5eetJ+6AWUeMWWmWkXx2i1Z83sAAAHFv71danFfqyz0j095BxdtZ4tkrgrP2/Vb5RjM2m9ptaeZmeZn1YAAAAAAAAAAAAAABu1tnLr272O3zWekpTD2vitHGas0n1jxhCkVtafpiZ+PEFkrv6tumev7+Dxk7S1K/9sWn0rHKDjW2J6YMvH9kvNsOWn3YslY96yCQ2e1r2iY169z/1bqjbTa1u9a02t5zPmxyAAAAAAAAAAAAAAAN+tqZtmfyq/T52nwh2aHZk37uXYiYr1inr8pitYrWK1iIiOkQDgwdlYcfE5ZnJb38Id1MdKRxStax7Q9gBwANObVwZo/MxVn34Ruz2RMc217cx+mev+UwAql6Wx3mt4mto8ph5Wba1sezSa5a/Ex1hA7mpk1cnFvGs/bb1BzgAAAAAAAAAJTsvR73GfNHh/RWf5cvZ2t/ys8RMfl18be/ssURERxHSAZAAAAAAAAa82KmbHNMkc1lsAVnc1rauaaT4161n1hoWTe1Y2sM08O9HjWfSVcmJraa2jiYnxBgAAAAAAG3Vp+Ls48f6rQCc7MwRg1a8x9VvGzsYiOGQAAAAAAAAAAJ6IPtnBGPPGWvTJ1+U44u1sff0rzxHNPqgFfAAAAAAdfZMc7+P2738ACxAAAAAAAAAAAANW3HOrmifOk/wAKuAAAD/2Q==" alt="Governor">
-                <p><strong>Mark Ax'l Cadenas</strong><br>Governor (2025)</p>
+                <img src="https://image2url.com/images/1765892802425-70a83c73-2bb5-42a9-9589-b63689797406.jpeg" alt="Governor">
+                <h3>Mark Ax'l Cadenas</h3>
+                <p>Governor (2025)</p>
             </div>
-
             <div class="officer-card">
-                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAJQArQMBIgACEQEDEQH/xAAbAAEAAgMBAQAAAAAAAAAAAAAABQYBAwQCB//EAC8QAQACAgEBBwIFBAMAAAAAAAABAgMEETEFEiFBUWFxIjITI1KBsUJykZIUQ2L/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A+iAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMxEzPERM/CR0uy7ZIi+fmtPKsdZS2LBiwxxipFfgFdjV2JjmMGX/AFl5vhzUjm+K9Y9ZrK0gKkLFs6GHPH2923lavghNvUy6uTi/jWelo8waAAAAAAAAAAAAAAEl2Rpxln8e/wBtZ+mPf1R1aza0VjrM8LRgx1xYq46x4VjgGwAAABrz4aZsdqZI5rLYAq+zhtr5rY7eXSfWPVqTPbeGJxUzRHjWeJ+EMAAAAAAAAAAAADfox3tzDE9O/H7rMq+pf8PaxWnpF4WgAAAAAAHL2lETo5efKOVcWHtW8V0ckfq4qrwAAAAAAAAAAAAHHusnZ+xGxrVt/VHhaPeFbdGjtzq5eetJ+6AWUeMWWmWkXx2i1Z83sAAAHFv71danFfqyz0j095BxdtZ4tkrgrP2/Vb5RjM2m9ptaeZmeZn1YAAAAAAAAAAAAAABu1tnLr272O3zWekpTD2vitHGas0n1jxhCkVtafpiZ+PEFkrv6tumev7+Dxk7S1K/9sWn0rHKDjW2J6YMvH9kvNsOWn3YslY96yCQ2e1r2iY169z/1bqjbTa1u9a02t5zPmxyAAAAAAAAAAAAAAAN+tqZtmfyq/T52nwh2aHZk37uXYiYr1inr8pitYrWK1iIiOkQDgwdlYcfE5ZnJb38Id1MdKRxStax7Q9gBwANObVwZo/MxVn34Ruz2RMc217cx+mev+UwAql6Wx3mt4mto8ph5Wba1sezSa5a/Ex1hA7mpk1cnFvGs/bb1BzgAAAAAAAAAJTsvR73GfNHh/RWf5cvZ2t/ys8RMfl18be/ssURERxHSAZAAAAAAAAa82KmbHNMkc1lsAVnc1rauaaT4161n1hoWTe1Y2sM08O9HjWfSVcmJraa2jiYnxBgAAAAAAG3Vp+Ls48f6rQCc7MwRg1a8x9VvGzsYiOGQAAAAAAAAAAJ6IPtnBGPPGWvTJ1+U44u1sff0rzxHNPqgFfAAAAAAdfZMc7+P2738ACxAAAAAAAAAAAANW3HOrmifOk/wAKuAAAD/2Q==" alt="Vice Governor">
-                <p><strong>Cresente Hortzuela Jr.</strong><br>Vice Governor (2025)</p>
+                <img src="https://image2url.com/images/1765892858839-d801ba3e-d521-4e8f-b224-3ecafc28a54d.jpeg" alt="Vice Governor">
+                <h3>Cresente Hortzuela Jr.</h3>
+                <p>Vice Governor (2025)</p>
             </div>
-
             <div class="officer-card">
-                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAJQArQMBIgACEQEDEQH/xAAbAAEAAgMBAQAAAAAAAAAAAAAABQYBAwQCB//EAC8QAQACAgEBBwIFBAMAAAAAAAABAgMEETEFEiFBUWFxIjITI1KBsUJykZIUQ2L/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A+iAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMxEzPERM/CR0uy7ZIi+fmtPKsdZS2LBiwxxipFfgFdjV2JjmMGX/AFl5vhzUjm+K9Y9ZrK0gKkLFs6GHPH2923lavghNvUy6uTi/jWelo8waAAAAAAAAAAAAAAEl2Rpxln8e/wBtZ+mPf1R1aza0VjrM8LRgx1xYq46x4VjgGwAAABrz4aZsdqZI5rLYAq+zhtr5rY7eXSfWPVqTPbeGJxUzRHjWeJ+EMAAAAAAAAAAAADfox3tzDE9O/H7rMq+pf8PaxWnpF4WgAAAAAAHL2lETo5efKOVcWHtW8V0ckfq4qrwAAAAAAAAAAAAHHusnZ+xGxrVt/VHhaPeFbdGjtzq5eetJ+6AWUeMWWmWkXx2i1Z83sAAAHFv71danFfqyz0j095BxdtZ4tkrgrP2/Vb5RjM2m9ptaeZmeZn1YAAAAAAAAAAAAAABu1tnLr272O3zWekpTD2vitHGas0n1jxhCkVtafpiZ+PEFkrv6tumev7+Dxk7S1K/9sWn0rHKDjW2J6YMvH9kvNsOWn3YslY96yCQ2e1r2iY169z/1bqjbTa1u9a02t5zPmxyAAAAAAAAAAAAAAAN+tqZtmfyq/T52nwh2aHZk37uXYiYr1inr8pitYrWK1iIiOkQDgwdlYcfE5ZnJb38Id1MdKRxStax7Q9gBwANObVwZo/MxVn34Ruz2RMc217cx+mev+UwAql6Wx3mt4mto8ph5Wba1sezSa5a/Ex1hA7mpk1cnFvGs/bb1BzgAAAAAAAAAJTsvR73GfNHh/RWf5cvZ2t/ys8RMfl18be/ssURERxHSAZAAAAAAAAa82KmbHNMkc1lsAVnc1rauaaT4161n1hoWTe1Y2sM08O9HjWfSVcmJraa2jiYnxBgAAAAAAG3Vp+Ls48f6rQCc7MwRg1a8x9VvGzsYiOGQAAAAAAAAAAJ6IPtnBGPPGWvTJ1+U44u1sff0rzxHNPqgFfAAAAAAdfZMc7+P2738ACxAAAAAAAAAAAANW3HOrmifOk/wAKuAAAD/2Q==" alt="Secretary">
-                <p><strong>Khian Harvey Calvo</strong><br>Secretary (2025)</p>
+                <img src="https://image2url.com/images/1765892896213-4dfa5ac9-8d03-4561-b07a-2e37426f96bf.jpeg" alt="Secretary">
+                <h3>Khian Harvey Calvo</h3>
+                <p>Secretary (2025)</p>
             </div>
-
             <div class="officer-card">
-                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAJQArQMBIgACEQEDEQH/xAAbAAEAAgMBAQAAAAAAAAAAAAAABQYBAwQCB//EAC8QAQACAgEBBwIFBAMAAAAAAAABAgMEETEFEiFBUWFxIjITI1KBsUJykZIUQ2L/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A+iAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMxEzPERM/CR0uy7ZIi+fmtPKsdZS2LBiwxxipFfgFdjV2JjmMGX/AFl5vhzUjm+K9Y9ZrK0gKkLFs6GHPH2923lavghNvUy6uTi/jWelo8waAAAAAAAAAAAAAAEl2Rpxln8e/wBtZ+mPf1R1aza0VjrM8LRgx1xYq46x4VjgGwAAABrz4aZsdqZI5rLYAq+zhtr5rY7eXSfWPVqTPbeGJxUzRHjWeJ+EMAAAAAAAAAAAADfox3tzDE9O/H7rMq+pf8PaxWnpF4WgAAAAAAHL2lETo5efKOVcWHtW8V0ckfq4qrwAAAAAAAAAAAAHHusnZ+xGxrVt/VHhaPeFbdGjtzq5eetJ+6AWUeMWWmWkXx2i1Z83sAAAHFv71danFfqyz0j095BxdtZ4tkrgrP2/Vb5RjM2m9ptaeZmeZn1YAAAAAAAAAAAAAABu1tnLr272O3zWekpTD2vitHGas0n1jxhCkVtafpiZ+PEFkrv6tumev7+Dxk7S1K/9sWn0rHKDjW2J6YMvH9kvNsOWn3YslY96yCQ2e1r2iY169z/1bqjbTa1u9a02t5zPmxyAAAAAAAAAAAAAAAN+tqZtmfyq/T52nwh2aHZk37uXYiYr1inr8pitYrWK1iIiOkQDgwdlYcfE5ZnJb38Id1MdKRxStax7Q9gBwANObVwZo/MxVn34Ruz2RMc217cx+mev+UwAql6Wx3mt4mto8ph5Wba1sezSa5a/Ex1hA7mpk1cnFvGs/bb1BzgAAAAAAAAAJTsvR73GfNHh/RWf5cvZ2t/ys8RMfl18be/ssURERxHSAZAAAAAAAAa82KmbHNMkc1lsAVnc1rauaaT4161n1hoWTe1Y2sM08O9HjWfSVcmJraa2jiYnxBgAAAAAAG3Vp+Ls48f6rQCc7MwRg1a8x9VvGzsYiOGQAAAAAAAAAAJ6IPtnBGPPGWvTJ1+U44u1sff0rzxHNPqgFfAAAAAAdfZMc7+P2738ACxAAAAAAAAAAAANW3HOrmifOk/wAKuAAAD/2Q==" alt="Treasurer">
-                <p><strong>Chenyl Cabillada</strong><br>Treasurer (2025)</p>
+                <img src="https://image2url.com/images/1765892919944-6cb0f8fb-1056-4902-8e84-04a27bb459a2.jpeg" alt="Treasurer">
+                <h3>Chenyl Cabillada</h3>
+                <p>Treasurer (2025)</p>
             </div>
-
             <div class="officer-card">
-                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAJQArQMBIgACEQEDEQH/xAAbAAEAAgMBAQAAAAAAAAAAAAAABQYBAwQCB//EAC8QAQACAgEBBwIFBAMAAAAAAAABAgMEETEFEiFBUWFxIjITI1KBsUJykZIUQ2L/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A+iAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMxEzPERM/CR0uy7ZIi+fmtPKsdZS2LBiwxxipFfgFdjV2JjmMGX/AFl5vhzUjm+K9Y9ZrK0gKkLFs6GHPH2923lavghNvUy6uTi/jWelo8waAAAAAAAAAAAAAAEl2Rpxln8e/wBtZ+mPf1R1aza0VjrM8LRgx1xYq46x4VjgGwAAABrz4aZsdqZI5rLYAq+zhtr5rY7eXSfWPVqTPbeGJxUzRHjWeJ+EMAAAAAAAAAAAADfox3tzDE9O/H7rMq+pf8PaxWnpF4WgAAAAAAHL2lETo5efKOVcWHtW8V0ckfq4qrwAAAAAAAAAAAAHHusnZ+xGxrVt/VHhaPeFbdGjtzq5eetJ+6AWUeMWWmWkXx2i1Z83sAAAHFv71danFfqyz0j095BxdtZ4tkrgrP2/Vb5RjM2m9ptaeZmeZn1YAAAAAAAAAAAAAABu1tnLr272O3zWekpTD2vitHGas0n1jxhCkVtafpiZ+PEFkrv6tumev7+Dxk7S1K/9sWn0rHKDjW2J6YMvH9kvNsOWn3YslY96yCQ2e1r2iY169z/1bqjbTa1u9a02t5zPmxyAAAAAAAAAAAAAAAN+tqZtmfyq/T52nwh2aHZk37uXYiYr1inr8pitYrWK1iIiOkQDgwdlYcfE5ZnJb38Id1MdKRxStax7Q9gBwANObVwZo/MxVn34Ruz2RMc217cx+mev+UwAql6Wx3mt4mto8ph5Wba1sezSa5a/Ex1hA7mpk1cnFvGs/bb1BzgAAAAAAAAAJTsvR73GfNHh/RWf5cvZ2t/ys8RMfl18be/ssURERxHSAZAAAAAAAAa82KmbHNMkc1lsAVnc1rauaaT4161n1hoWTe1Y2sM08O9HjWfSVcmJraa2jiYnxBgAAAAAAG3Vp+Ls48f6rQCc7MwRg1a8x9VvGzsYiOGQAAAAAAAAAAJ6IPtnBGPPGWvTJ1+U44u1sff0rzxHNPqgFfAAAAAAdfZMc7+P2738ACxAAAAAAAAAAAANW3HOrmifOk/wAKuAAAD/2Q==" alt="Auditor">
-                <p><strong>Jay-an Balbez</strong><br>Auditor (2025)</p>
+                <img src="https://image2url.com/images/1765892953251-0dc2e55d-2f74-42bb-a0e6-ff7e7b367443.jpeg" alt="Auditor">
+                <h3>Jay-an Balvez</h3>
+                <p>Auditor (2025)</p>
             </div>
-
             <div class="officer-card">
-                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAJQArQMBIgACEQEDEQH/xAAbAAEAAgMBAQAAAAAAAAAAAAAABQYBAwQCB//EAC8QAQACAgEBBwIFBAMAAAAAAAABAgMEETEFEiFBUWFxIjITI1KBsUJykZIUQ2L/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A+iAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMxEzPERM/CR0uy7ZIi+fmtPKsdZS2LBiwxxipFfgFdjV2JjmMGX/AFl5vhzUjm+K9Y9ZrK0gKkLFs6GHPH2923lavghNvUy6uTi/jWelo8waAAAAAAAAAAAAAAEl2Rpxln8e/wBtZ+mPf1R1aza0VjrM8LRgx1xYq46x4VjgGwAAABrz4aZsdqZI5rLYAq+zhtr5rY7eXSfWPVqTPbeGJxUzRHjWeJ+EMAAAAAAAAAAAADfox3tzDE9O/H7rMq+pf8PaxWnpF4WgAAAAAAHL2lETo5efKOVcWHtW8V0ckfq4qrwAAAAAAAAAAAAHHusnZ+xGxrVt/VHhaPeFbdGjtzq5eetJ+6AWUeMWWmWkXx2i1Z83sAAAHFv71danFfqyz0j095BxdtZ4tkrgrP2/Vb5RjM2m9ptaeZmeZn1YAAAAAAAAAAAAAABu1tnLr272O3zWekpTD2vitHGas0n1jxhCkVtafpiZ+PEFkrv6tumev7+Dxk7S1K/9sWn0rHKDjW2J6YMvH9kvNsOWn3YslY96yCQ2e1r2iY169z/1bqjbTa1u9a02t5zPmxyAAAAAAAAAAAAAAAN+tqZtmfyq/T52nwh2aHZk37uXYiYr1inr8pitYrWK1iIiOkQDgwdlYcfE5ZnJb38Id1MdKRxStax7Q9gBwANObVwZo/MxVn34Ruz2RMc217cx+mev+UwAql6Wx3mt4mto8ph5Wba1sezSa5a/Ex1hA7mpk1cnFvGs/bb1BzgAAAAAAAAAJTsvR73GfNHh/RWf5cvZ2t/ys8RMfl18be/ssURERxHSAZAAAAAAAAa82KmbHNMkc1lsAVnc1rauaaT4161n1hoWTe1Y2sM08O9HjWfSVcmJraa2jiYnxBgAAAAAAG3Vp+Ls48f6rQCc7MwRg1a8x9VvGzsYiOGQAAAAAAAAAAJ6IPtnBGPPGWvTJ1+U44u1sff0rzxHNPqgFfAAAAAAdfZMc7+P2738ACxAAAAAAAAAAAANW3HOrmifOk/wAKuAAAD/2Q==" alt="PIO">
-                <p><strong>Brylle Estanero</strong><br>PIO (2025)</p>
+                <img src="https://image2url.com/images/1765892989737-051c710f-afaf-4ff0-87c6-13f9f13aeef0.jpeg" alt="PIO">
+                <h3>Brylle Estanero</h3>
+                <p>PIO (2025)</p>
             </div>
-
             <div class="officer-card">
-                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAJQArQMBIgACEQEDEQH/xAAbAAEAAgMBAQAAAAAAAAAAAAAABQYBAwQCB//EAC8QAQACAgEBBwIFBAMAAAAAAAABAgMEETEFEiFBUWFxIjITI1KBsUJykZIUQ2L/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A+iAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMxEzPERM/CR0uy7ZIi+fmtPKsdZS2LBiwxxipFfgFdjV2JjmMGX/AFl5vhzUjm+K9Y9ZrK0gKkLFs6GHPH2923lavghNvUy6uTi/jWelo8waAAAAAAAAAAAAAAEl2Rpxln8e/wBtZ+mPf1R1aza0VjrM8LRgx1xYq46x4VjgGwAAABrz4aZsdqZI5rLYAq+zhtr5rY7eXSfWPVqTPbeGJxUzRHjWeJ+EMAAAAAAAAAAAADfox3tzDE9O/H7rMq+pf8PaxWnpF4WgAAAAAAHL2lETo5efKOVcWHtW8V0ckfq4qrwAAAAAAAAAAAAHHusnZ+xGxrVt/VHhaPeFbdGjtzq5eetJ+6AWUeMWWmWkXx2i1Z83sAAAHFv71danFfqyz0j095BxdtZ4tkrgrP2/Vb5RjM2m9ptaeZmeZn1YAAAAAAAAAAAAAABu1tnLr272O3zWekpTD2vitHGas0n1jxhCkVtafpiZ+PEFkrv6tumev7+Dxk7S1K/9sWn0rHKDjW2J6YMvH9kvNsOWn3YslY96yCQ2e1r2iY169z/1bqjbTa1u9a02t5zPmxyAAAAAAAAAAAAAAAN+tqZtmfyq/T52nwh2aHZk37uXYiYr1inr8pitYrWK1iIiOkQDgwdlYcfE5ZnJb38Id1MdKRxStax7Q9gBwANObVwZo/MxVn34Ruz2RMc217cx+mev+UwAql6Wx3mt4mto8ph5Wba1sezSa5a/Ex1hA7mpk1cnFvGs/bb1BzgAAAAAAAAAJTsvR73GfNHh/RWf5cvZ2t/ys8RMfl18be/ssURERxHSAZAAAAAAAAa82KmbHNMkc1lsAVnc1rauaaT4161n1hoWTe1Y2sM08O9HjWfSVcmJraa2jiYnxBgAAAAAAG3Vp+Ls48f6rQCc7MwRg1a8x9VvGzsYiOGQAAAAAAAAAAJ6IPtnBGPPGWvTJ1+U44u1sff0rzxHNPqgFfAAAAAAdfZMc7+P2738ACxAAAAAAAAAAAANW3HOrmifOk/wAKuAAAD/2Q==" alt="PIO">
-                <p><strong>Charles Dave Alarcon</strong><br>PIO (2025)</p>
+                <img src="https://image2url.com/images/1765893020500-f3b0bdb0-8984-4438-a3c0-0d65f6cfeecc.jpeg" alt="PIO">
+                <h3>Charles Dave Alarcon</h3>
+                <p>PIO (2025)</p>
             </div>
-
         </div>
     </section>
 
@@ -118,14 +119,5 @@
         </div>
     </section>
 
-    <script>
-function toggleMenu() {
-    const menu = document.getElementById("navMenu");
-    menu.style.display = menu.style.display === "block" ? "none" : "block";
-}
-</script>
-
-
 </body>
 </html>
-
