@@ -23,7 +23,7 @@ body {
     padding: 15px 25px;
 
     display: flex;
-    justify-content: space-between;  /* push logo left + menu right */
+    justify-content: space-between;
     align-items: center;
     position: sticky;
     top: 0;
@@ -140,7 +140,7 @@ h1, h2 {
     width: 60%;
     padding: 12px;
     border-radius: 5px;
-    border: 2px solid #f4b737; /* gold */
+    border: 2px solid #f4b737;
     background-color: #132435;
     color: #ffffff;
     font-size: 16px;
@@ -148,7 +148,7 @@ h1, h2 {
 }
 
 #search:focus {
-    border-color: #ffda74; /* lighter gold */
+    border-color: #ffda74;
 }
 
 /* ============================================
@@ -162,6 +162,7 @@ h1, h2 {
     margin-bottom: 40px;
 }
 
+/* ✅ OPTION 2 INSERTED HERE */
 .card {
     background-color: #132435;
     border: 2px solid #1c2c3c;
@@ -171,6 +172,9 @@ h1, h2 {
     text-align: center;
     cursor: pointer;
     transition: 0.3s;
+
+    display: flex;
+    flex-direction: column; /* allows button alignment */
 }
 
 .card img {
@@ -190,10 +194,11 @@ h1, h2 {
     color: #b5c2d1;
 }
 
+/* ✅ BUTTON ALIGNMENT FIX */
 .card button {
-    margin-top: 10px;
+    margin-top: auto; /* pushes button to bottom */
     padding: 10px 20px;
-    background-color: #f4b737; /* gold */
+    background-color: #f4b737;
     color: #000000;
     border: none;
     cursor: pointer;
@@ -203,7 +208,7 @@ h1, h2 {
 }
 
 .card button:hover {
-    background-color: #ffd66b; /* lighter gold */
+    background-color: #ffd66b;
 }
 
 .card:hover {
