@@ -300,9 +300,10 @@ a {
   <nav class="nav-links">
     <a href="faculty.html">Faculty</a>
     <a href="studentsorganization.html">Organizations</a>
-    <a href="news.html">News</a>
+    <a href="news.php">News</a>
     <a href="achievement.html">Achievements</a>
     <a href="inquires.php">Inquiries</a>
+    <a href="Admin.php">Admin</a>
   </nav>
 
   <button class="hamburger" onclick="openMenu()">☰</button>
@@ -315,9 +316,10 @@ a {
   <ul class="menu-list">
     <li><a href="faculty.html">Faculty</a></li>
     <li><a href="studentsorganization.html">Organizations</a></li>
-    <li><a href="news.html">News</a></li>
+    <li><a href="news.php">News</a></li>
     <li><a href="achievement.html">Achievements</a></li>
     <li><a href="inquires.php">Inquiries</a></li>
+    <li><a href="Admin.php">Admin</a></li>
   </ul>
 </div>
 
