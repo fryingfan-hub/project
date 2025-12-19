@@ -54,7 +54,24 @@ a {
 .logo .it { color: #F2B632; }
 .logo .tab { color: #ffffff; margin-left: 4px; }
 
+/* DESKTOP NAV */
+.nav-links {
+  display: flex;
+  gap: 26px;
+}
+
+.nav-links a {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.nav-links a:hover {
+  color: #F2B632;
+}
+
+/* HAMBURGER (hidden on desktop) */
 .hamburger {
+  display: none;
   background: none;
   border: none;
   font-size: 30px;
@@ -63,7 +80,7 @@ a {
 }
 
 /* =====================================================
-   SIDE MENU
+   SIDE MENU (MOBILE)
 ===================================================== */
 #overlay {
   position: fixed;
@@ -171,12 +188,12 @@ a {
   background: rgba(4, 15, 23, 0.85);
   border-radius: 30px;
   padding: 40px 50px;
-  backdrop-filter: blur(6px);
 }
 
 .ann-head {
   display: flex;
   justify-content: space-between;
+  gap: 10px;
 }
 
 .ann-title {
@@ -261,9 +278,19 @@ a {
 }
 
 /* =====================================================
-   MOBILE FIX
+   RESPONSIVE (MOBILE)
 ===================================================== */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
+
+  /* hide desktop nav */
+  .nav-links {
+    display: none;
+  }
+
+  /* show hamburger */
+  .hamburger {
+    display: block;
+  }
 
   .news-container {
     padding: 16px 18px;
@@ -284,7 +311,6 @@ a {
 
   .ann-head {
     flex-direction: column;
-    gap: 6px;
   }
 
   .ann-title {
@@ -327,9 +353,20 @@ a {
 <body>
 
 <header class="top-nav">
-  <div class="logo">
-    <span class="it">IT</span><span class="tab">Tab</span>
-  </div>
+  <a href="index.php" class="logo">
+  <span class="it">IT</span><span class="tab">Tab</span>
+</a>
+
+
+  <nav class="nav-links">
+    <a href="faculty.html">Faculty</a>
+    <a href="studentsorganization.html">Organizations</a>
+    <a href="news.html">News</a>
+    <a href="achievement.html">Achievements</a>
+    <a href="inquires.php">Inquiries</a>
+    <a href="Admin.php">Admin</a>
+  </nav>
+
   <button class="hamburger" onclick="openMenu()">☰</button>
 </header>
 
@@ -338,14 +375,12 @@ a {
 <div id="sideMenu">
   <button id="closeMenuBtn" onclick="closeMenu()">×</button>
   <ul class="menu-list">
-    <li><a href="index.html">Home</a></li>
     <li><a href="faculty.html">Faculty</a></li>
     <li><a href="studentsorganization.html">Organizations</a></li>
-    <li><a href="achievement.html">Achievements</a></li>
-    <li><a href="news.html">News</a></li>
+    <li><a href="news.php">News</a></li>
+    <li><a href="achievemnt.html">Achievements</a></li>
     <li><a href="inquires.php">Inquiries</a></li>
     <li><a href="Admin.php">Admin</a></li>
-
   </ul>
 </div>
 

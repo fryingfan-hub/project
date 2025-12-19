@@ -300,7 +300,7 @@ a {
   <nav class="nav-links">
     <a href="faculty.html">Faculty</a>
     <a href="studentsorganization.html">Organizations</a>
-    <a href="news.php">News</a>
+    <a href="news.html">News</a>
     <a href="achievement.html">Achievements</a>
     <a href="inquires.php">Inquiries</a>
     <a href="Admin.php">Admin</a>
