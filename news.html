@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ITTab – News</title>
+<title>ITTab – BSIT Program</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
@@ -18,9 +18,10 @@
   font-family: "Poppins", sans-serif;
 }
 
-body {
+html, body {
   background: #0d1b2a;
   color: #ffffff;
+  scroll-behavior: smooth;
 }
 
 a {
@@ -57,19 +58,19 @@ a {
 /* DESKTOP NAV */
 .nav-links {
   display: flex;
-  gap: 26px;
+  gap: 28px;
 }
 
 .nav-links a {
-  font-size: 15px;
   font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 .nav-links a:hover {
   color: #F2B632;
 }
 
-/* HAMBURGER (hidden on desktop) */
+/* HAMBURGER (hidden by default) */
 .hamburger {
   display: none;
   background: none;
@@ -102,7 +103,7 @@ a {
   z-index: 999;
 }
 
-#closeMenuBtn {
+#closeMenu {
   background: none;
   border: none;
   font-size: 34px;
@@ -129,152 +130,123 @@ a {
 }
 
 /* =====================================================
-   NEWS HERO
+   HERO
 ===================================================== */
-.news-hero {
+.hero {
   position: relative;
-  min-height: 100vh;
-  padding-top: 90px;
+  height: 100vh;
+  margin-top: 70px;
   display: flex;
-  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
-.news-bg {
+.hero-bg {
   position: absolute;
   inset: 0;
   background: url("img/school-bg.png") center / cover no-repeat;
-  filter: brightness(0.35);
-  z-index: -1;
+  background-attachment: fixed;
 }
 
-.news-container {
-  width: 100%;
+.hero-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(6, 18, 31, 0.65);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
   max-width: 1300px;
-  padding: 20px 70px;
+  padding: 40px 70px;
 }
 
-/* =====================================================
-   TABS
-===================================================== */
-.news-tabs {
-  height: 50px;
-  background: rgba(16, 40, 64, 0.9);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 50px;
-  border-radius: 10px;
-}
-
-.news-tabs button {
-  background: none;
-  border: none;
-  color: #ffffff;
-  font-size: 18px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.news-tabs .active {
-  color: #F2B632;
-}
-
-/* =====================================================
-   ANNOUNCEMENTS
-===================================================== */
-.ann-card {
-  margin-top: 40px;
-  width: 75%;
-  background: rgba(4, 15, 23, 0.85);
-  border-radius: 30px;
-  padding: 40px 50px;
-}
-
-.ann-head {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-.ann-title {
-  font-size: 50px;
+.hero-logo {
+  font-size: 100px;
   font-weight: 800;
+  line-height: 0.95;
 }
 
-.ann-date {
-  font-size: 20px;
-  opacity: 0.8;
-}
+.hero-logo .it { color: #F2B632; }
+.hero-logo .tab { color: #ffffff; }
 
-.ann-desc {
-  margin-top: 20px;
-  max-width: 600px;
+.hero-desc {
+  max-width: 520px;
+  margin-top: 18px;
   font-size: 16px;
-}
-
-.ann-img-wrapper {
-  margin-top: 30px;
-}
-
-.ann-img-wrapper img {
-  width: 320px;
-  height: 320px;
-  object-fit: cover;
-  border-radius: 20px;
-}
-
-/* =====================================================
-   EVENTS
-===================================================== */
-.event-card {
-  width: 75%;
-  margin-top: 30px;
-  background: rgba(4, 15, 23, 0.85);
-  border-radius: 25px;
-  display: flex;
-  padding: 25px 30px;
-}
-
-.event-date {
-  width: 110px;
-  height: 110px;
-  background: rgba(1,10,18,0.95);
-  border-radius: 18px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.ev-month {
-  font-size: 24px;
-  font-weight: 700;
-}
-
-.ev-day {
-  font-size: 42px;
-  font-weight: 900;
-}
-
-.event-body {
-  margin-left: 20px;
-}
-
-.event-title {
-  font-size: 30px;
-  font-weight: 700;
-}
-
-.event-desc {
-  font-size: 16px;
+  line-height: 1.7;
   opacity: 0.9;
 }
 
 /* =====================================================
-   VISIBILITY
+   SHARED BACKGROUND SECTIONS
 ===================================================== */
-.hidden {
-  display: none;
+.shared-bg {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.shared-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("img/vandm-bg.png") center / cover no-repeat;
+  background-attachment: fixed;
+  filter: brightness(0.35);
+}
+
+.shared-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 140px 80px;
+}
+
+.shared-title {
+  font-size: 64px;
+  font-weight: 800;
+  color: #F2B632;
+}
+
+.shared-text {
+  margin-top: 20px;
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+/* =====================================================
+   CONTACTS
+===================================================== */
+.contacts {
+  min-height: 100vh;
+  background: #0d1b2a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.contacts-content {
+  max-width: 700px;
+  padding: 120px 40px;
+}
+
+.contacts-content h2 {
+  font-size: 48px;
+  color: #F2B632;
+  font-weight: 800;
+}
+
+.contacts-content p {
+  margin-top: 20px;
+  font-size: 16px;
+  line-height: 1.7;
+  opacity: 0.9;
 }
 
 /* =====================================================
@@ -282,69 +254,36 @@ a {
 ===================================================== */
 @media (max-width: 900px) {
 
-  /* hide desktop nav */
+  /* Hide desktop nav */
   .nav-links {
     display: none;
   }
 
-  /* show hamburger */
+  /* Show hamburger */
   .hamburger {
     display: block;
   }
 
-  .news-container {
-    padding: 16px 18px;
+  .hero-logo {
+    font-size: 60px;
   }
 
-  .news-tabs {
-    gap: 30px;
+  .hero-content {
+    padding: 30px;
   }
 
-  .news-tabs button {
-    font-size: 15px;
+  .shared-content {
+    padding: 100px 30px;
   }
 
-  .ann-card,
-  .event-card {
-    width: 100%;
+  .shared-title {
+    font-size: 42px;
   }
 
-  .ann-head {
-    flex-direction: column;
-  }
-
-  .ann-title {
-    font-size: 28px;
-  }
-
-  .ann-date {
-    font-size: 14px;
-  }
-
-  .ann-img-wrapper img {
-    width: 100%;
-    height: auto;
-  }
-
-  .event-date {
-    width: 80px;
-    height: 90px;
-  }
-
-  .ev-month {
-    font-size: 14px;
-  }
-
-  .ev-day {
-    font-size: 28px;
-  }
-
-  .event-title {
-    font-size: 20px;
-  }
-
-  .event-desc {
-    font-size: 14px;
+  /* Disable parallax on mobile */
+  .hero-bg,
+  .shared-bg::before {
+    background-attachment: scroll;
   }
 }
 </style>
@@ -361,9 +300,10 @@ a {
   <nav class="nav-links">
     <a href="faculty.html">Faculty</a>
     <a href="studentsorganization.html">Organizations</a>
-    <a href="news.html">News</a>
+    <a href="news.php">News</a>
     <a href="achievement.html">Achievements</a>
     <a href="inquires.php">Inquiries</a>
+    <a href="Admin.php">Admin</a>
   </nav>
 
   <button class="hamburger" onclick="openMenu()">☰</button>
@@ -372,52 +312,79 @@ a {
 <div id="overlay" onclick="closeMenu()"></div>
 
 <div id="sideMenu">
-  <button id="closeMenuBtn" onclick="closeMenu()">×</button>
+  <button id="closeMenu" onclick="closeMenu()">×</button>
   <ul class="menu-list">
     <li><a href="faculty.html">Faculty</a></li>
     <li><a href="studentsorganization.html">Organizations</a></li>
-    <li><a href="news.html">News</a></li>
-    <li><a href="achievemnt.html">Achievements</a></li>
+    <li><a href="news.php">News</a></li>
+    <li><a href="achievement.html">Achievements</a></li>
     <li><a href="inquires.php">Inquiries</a></li>
+    <li><a href="Admin.php">Admin</a></li>
   </ul>
 </div>
 
-<section class="news-hero">
-  <div class="news-bg"></div>
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <h1 class="hero-logo">
+      <span class="it">IT</span><span class="tab">Tab</span>
+    </h1>
+    <p class="hero-desc">
+      The official website of the BSIT program of CTU Tabuelan Campus,
+      dedicated to innovation, excellence, and future-ready IT education.
+    </p>
+  </div>
+</section>
 
-  <div class="news-container">
+<section class="shared-bg">
+  <div class="shared-content">
+    <h2 class="shared-title">About Us</h2>
+    <p class="shared-text">
+      The BSIT program develops skilled and adaptable IT professionals through
+      quality education, hands-on learning, and industry-relevant training.
+    </p>
+  </div>
+</section>
 
-    <div class="news-tabs">
-      <button class="active" onclick="showAnnouncements()">ANNOUNCEMENTS</button>
-      <button onclick="showEvents()">EVENTS</button>
-    </div>
+<section class="shared-bg">
+  <div class="shared-content">
+    <h2 class="shared-title">Mission</h2>
+    <p class="shared-text">
+      To provide students with strong technical foundations and ethical values
+      needed to thrive in the information technology industry.
+    </p>
+    <h2 class="shared-title">Vision</h2>
+    <p class="shared-text">
+      To be a leading IT program producing globally competitive and innovative graduates.
+    </p>
+  </div>
+</section>
 
-    <div id="announcements">
-      <div class="ann-card">
-        <div class="ann-head">
-          <h1 class="ann-title">BSIT Announcement</h1>
-          <p class="ann-date">00 / 00 / 00</p>
-        </div>
-        <p class="ann-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        <div class="ann-img-wrapper">
-          <img src="img/announcement-poster.png" alt="">
-        </div>
-      </div>
-    </div>
+<section class="shared-bg">
+  <div class="shared-content">
+    <h2 class="shared-title">Objectives</h2>
+    <p class="shared-text">
+      To equip students with technical competence, critical thinking skills,
+      and lifelong learning abilities.
+    </p>
+  </div>
+</section>
 
-    <div id="events" class="hidden">
-      <div class="event-card">
-        <div class="event-date">
-          <div class="ev-month">DEC</div>
-          <div class="ev-day">11</div>
-        </div>
-        <div class="event-body">
-          <h2 class="event-title">CHRISTMAS PARTY</h2>
-          <p class="event-desc">Lorem ipsum dolor sit amet.</p>
-        </div>
-      </div>
-    </div>
+<section class="shared-bg">
+  <div class="shared-content">
+    <h2 class="shared-title">Why Choose IT?</h2>
+    <p class="shared-text">
+      Information Technology empowers innovation and problem-solving.
+      Choosing IT opens doors to dynamic careers in a rapidly evolving digital world.
+    </p>
+  </div>
+</section>
 
+<section class="contacts">
+  <div class="contacts-content">
+    <h2>Contacts</h2>
+    <p>09XX-XXX-XXXX</p>
+    <p>example@email.com</p>
   </div>
 </section>
 
@@ -430,20 +397,6 @@ function openMenu() {
 function closeMenu() {
   document.getElementById("sideMenu").style.right = "-300px";
   document.getElementById("overlay").style.display = "none";
-}
-
-function showAnnouncements() {
-  document.getElementById("announcements").classList.remove("hidden");
-  document.getElementById("events").classList.add("hidden");
-  document.querySelectorAll(".news-tabs button")[0].classList.add("active");
-  document.querySelectorAll(".news-tabs button")[1].classList.remove("active");
-}
-
-function showEvents() {
-  document.getElementById("events").classList.remove("hidden");
-  document.getElementById("announcements").classList.add("hidden");
-  document.querySelectorAll(".news-tabs button")[1].classList.add("active");
-  document.querySelectorAll(".news-tabs button")[0].classList.remove("active");
 }
 </script>
 
