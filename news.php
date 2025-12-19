@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ITTab – News</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* =====================================================
+   BASE
+===================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #0d1b2a;
+  color: #ffffff;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* =====================================================
+   TOP NAV
+===================================================== */
+.top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  background: #06121f;
+  padding: 0 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.45);
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.logo .it { color: #F2B632; }
+.logo .tab { color: #ffffff; margin-left: 4px; }
+
+/* DESKTOP NAV */
+.nav-links {
+  display: flex;
+  gap: 26px;
+}
+
+.nav-links a {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.nav-links a:hover {
+  color: #F2B632;
+}
+
+/* HAMBURGER (hidden on desktop) */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 30px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+/* =====================================================
+   SIDE MENU (MOBILE)
+===================================================== */
+#overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  z-index: 998;
+}
+
+#sideMenu {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 300px;
+  height: 100vh;
+  background: #0f2a3a;
+  padding: 24px;
+  transition: right 0.3s ease;
+  z-index: 999;
+}
+
+#closeMenuBtn {
+  background: none;
+  border: none;
+  font-size: 34px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.menu-list {
+  list-style: none;
+  margin-top: 30px;
+}
+
+.menu-list li {
+  margin: 18px 0;
+}
+
+.menu-list a {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.menu-list a:hover {
+  color: #F2B632;
+}
+
+/* =====================================================
+   NEWS HERO
+===================================================== */
+.news-hero {
+  position: relative;
+  min-height: 100vh;
+  padding-top: 90px;
+  display: flex;
+  justify-content: center;
+}
+
+.news-bg {
+  position: absolute;
+  inset: 0;
+  background: url("img/school-bg.png") center / cover no-repeat;
+  filter: brightness(0.35);
+  z-index: -1;
+}
+
+.news-container {
+  width: 100%;
+  max-width: 1300px;
+  padding: 20px 70px;
+}
+
+/* =====================================================
+   TABS
+===================================================== */
+.news-tabs {
+  height: 50px;
+  background: rgba(16, 40, 64, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  border-radius: 10px;
+}
+
+.news-tabs button {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.news-tabs .active {
+  color: #F2B632;
+}
+
+/* =====================================================
+   ANNOUNCEMENTS
+===================================================== */
+.ann-card {
+  margin-top: 40px;
+  width: 75%;
+  background: rgba(4, 15, 23, 0.85);
+  border-radius: 30px;
+  padding: 40px 50px;
+}
+
+.ann-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.ann-title {
+  font-size: 50px;
+  font-weight: 800;
+}
+
+.ann-date {
+  font-size: 20px;
+  opacity: 0.8;
+}
+
+.ann-desc {
+  margin-top: 20px;
+  max-width: 600px;
+  font-size: 16px;
+}
+
+.ann-img-wrapper {
+  margin-top: 30px;
+}
+
+.ann-img-wrapper img {
+  width: 320px;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+/* =====================================================
+   EVENTS
+===================================================== */
+.event-card {
+  width: 75%;
+  margin-top: 30px;
+  background: rgba(4, 15, 23, 0.85);
+  border-radius: 25px;
+  display: flex;
+  padding: 25px 30px;
+}
+
+.event-date {
+  width: 110px;
+  height: 110px;
+  background: rgba(1,10,18,0.95);
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.ev-month {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.ev-day {
+  font-size: 42px;
+  font-weight: 900;
+}
+
+.event-body {
+  margin-left: 20px;
+}
+
+.event-title {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.event-desc {
+  font-size: 16px;
+  opacity: 0.9;
+}
+
+/* =====================================================
+   VISIBILITY
+===================================================== */
+.hidden {
+  display: none;
+}
+
+/* =====================================================
+   RESPONSIVE (MOBILE)
+===================================================== */
+@media (max-width: 900px) {
+
+  /* hide desktop nav */
+  .nav-links {
+    display: none;
+  }
+
+  /* show hamburger */
+  .hamburger {
+    display: block;
+  }
+
+  .news-container {
+    padding: 16px 18px;
+  }
+
+  .news-tabs {
+    gap: 30px;
+  }
+
+  .news-tabs button {
+    font-size: 15px;
+  }
+
+  .ann-card,
+  .event-card {
+    width: 100%;
+  }
+
+  .ann-head {
+    flex-direction: column;
+  }
+
+  .ann-title {
+    font-size: 28px;
+  }
+
+  .ann-date {
+    font-size: 14px;
+  }
+
+  .ann-img-wrapper img {
+    width: 100%;
+    height: auto;
+  }
+
+  .event-date {
+    width: 80px;
+    height: 90px;
+  }
+
+  .ev-month {
+    font-size: 14px;
+  }
+
+  .ev-day {
+    font-size: 28px;
+  }
+
+  .event-title {
+    font-size: 20px;
+  }
+
+  .event-desc {
+    font-size: 14px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="top-nav">
+  <a href="index.php" class="logo">
+  <span class="it">IT</span><span class="tab">Tab</span>
+</a>
+
+
+  <nav class="nav-links">
+    <a href="faculty.html">Faculty</a>
+    <a href="studentsorganization.html">Organizations</a>
+    <a href="news.php">News</a>
+    <a href="achievement.html">Achievements</a>
+    <a href="inquires.php">Inquiries</a>
+  </nav>
+
+  <button class="hamburger" onclick="openMenu()">☰</button>
+</header>
+
+<div id="overlay" onclick="closeMenu()"></div>
+
+<div id="sideMenu">
+  <button id="closeMenuBtn" onclick="closeMenu()">×</button>
+  <ul class="menu-list">
+    <li><a href="#">Faculty</a></li>
+    <li><a href="#">Organizations</a></li>
+    <li><a href="#">Announcements</a></li>
+    <li><a href="#">Events</a></li>
+    <li><a href="#">Achievements</a></li>
+    <li><a href="#">Inquiries</a></li>
+  </ul>
+</div>
+
+<section class="news-hero">
+  <div class="news-bg"></div>
+
+  <div class="news-container">
+
+    <div class="news-tabs">
+      <button class="active" onclick="showAnnouncements()">ANNOUNCEMENTS</button>
+      <button onclick="showEvents()">EVENTS</button>
+    </div>
+
+    <div id="announcements">
+      <div class="ann-card">
+        <div class="ann-head">
+          <h1 class="ann-title">BSIT Announcement</h1>
+          <p class="ann-date">00 / 00 / 00</p>
+        </div>
+        <p class="ann-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <div class="ann-img-wrapper">
+          <img src="img/announcement-poster.png" alt="">
+        </div>
+      </div>
+    </div>
+
+    <div id="events" class="hidden">
+      <div class="event-card">
+        <div class="event-date">
+          <div class="ev-month">DEC</div>
+          <div class="ev-day">11</div>
+        </div>
+        <div class="event-body">
+          <h2 class="event-title">CHRISTMAS PARTY</h2>
+          <p class="event-desc">Lorem ipsum dolor sit amet.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+function openMenu() {
+  document.getElementById("sideMenu").style.right = "0";
+  document.getElementById("overlay").style.display = "block";
+}
+
+function closeMenu() {
+  document.getElementById("sideMenu").style.right = "-300px";
+  document.getElementById("overlay").style.display = "none";
+}
+
+function showAnnouncements() {
+  document.getElementById("announcements").classList.remove("hidden");
+  document.getElementById("events").classList.add("hidden");
+  document.querySelectorAll(".news-tabs button")[0].classList.add("active");
+  document.querySelectorAll(".news-tabs button")[1].classList.remove("active");
+}
+
+function showEvents() {
+  document.getElementById("events").classList.remove("hidden");
+  document.getElementById("announcements").classList.add("hidden");
+  document.querySelectorAll(".news-tabs button")[1].classList.add("active");
+  document.querySelectorAll(".news-tabs button")[0].classList.remove("active");
+}
+</script>
+
+</body>
+</html>
