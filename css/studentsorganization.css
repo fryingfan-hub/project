@@ -1,88 +1,318 @@
-/* General */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    background: #f8f8f8;
-    color: #333;
-}
+/* ===============================
+    GOOGLE FONT (POPPINS)
+    ================================ */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-header {
-    text-align: center;
-    padding: 30px;
-    background: #004AAD;
-    color: white;
-}
+    /* ===============================
+    GLOBAL STYLES
+    ================================ */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-h2 {
-    text-align: center;
-    margin-top: 40px;
-}
+    body {
+        font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont,
+                    'Segoe UI', Roboto, Arial, sans-serif;
+        background-color: #f5f7fa;
+        color: #333;
+        line-height: 1.6;
+    }
 
-/* ===== Organization Cards ===== */
-.org-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
-    padding: 30px;
-}
+    h1, h2, h3 {
+        font-weight: 600;
+    }
 
-.org-card {
-    background: white;
-    padding: 20px;
-    text-decoration: none;
-    color: #333;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    transition: 0.3s;
-}
+    img {
+        max-width: 100%;
+        display: block;
+    }
 
-.org-card:hover {
-    transform: translateY(-5px);
-}
+    /* ===============================
+    TOP NAVIGATION
+    ================================ */
+    .top-nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 60px;
+        background: #0b1c2c;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        z-index: 1000;
+    }
 
-.org-card img {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
-    display: block;
-    margin: 0 auto 15px auto;
-}
+    .logo {
+        text-decoration: none;
+        font-size: 1.4rem;
+        font-weight: 700;
+    }
 
-.org-card h3 {
-    text-align: center;
-    margin-bottom: 10px;
-}
+    .logo .it {
+        color: #f4b737;
+        margin-right: 5px;
+    }
 
-.year {
-    text-align: center;
-    font-size: 14px;
-    color: #666;
-}
+    .logo .tab {
+        color: #fff;
+    }
 
-/* ===== Gallery ===== */
-.gallery-section {
-    padding: 20px 40px;
-}
+    .hamburger {
+        background: none;
+        border: none;
+        font-size: 1.8rem;
+        color: #fff;
+        cursor: pointer;
+    }
 
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 15px;
-}
+    /* ===============================
+    SIDE MENU DROPDOWN (NEW)
+    ================================ */
+    #overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.3s;
+        z-index: 998;
+    }
 
-.gallery img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 8px;
-}
+    #overlay.active {
+        opacity: 1;
+        pointer-events: all;
+    }
 
-/* ===== Carousel ===== */
-.carousel {
-    width: 90%;
-    max-width: 700px;
-    margin: auto;
-    overflow: hidden;
-    border-radius: 10px;
-    background: #fff;
-    box-shadow: 0 3px 12
+    #sideMenu {
+        /* Old side menu (commented)
+        position: fixed;
+        top: 0;
+        left: -260px;
+        width: 260px;
+        height: 100%;
+        padding: 20px;
+        transition: 0.3s ease;
+        z-index: 1000;
+        */
+
+        /* New dropdown menu */
+        position: absolute;
+        top: 60px; /* below top nav */
+        right: 20px; /* aligned to hamburger button */
+        width: 220px;
+        background: #0b1c2c;
+        border-radius: 12px;
+        padding: 15px 0;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        opacity: 0;
+        transform: translateY(-10px);
+        pointer-events: none;
+        transition: all 0.25s ease;
+        z-index: 999;
+    }
+
+    #sideMenu.active {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    #closeMenu {
+        display: none; /* hide close button for dropdown */
+    }
+
+    .menu-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .menu-list li a {
+        display: block;
+        padding: 12px 20px;
+        color: #fff;
+        text-decoration: none;
+        font-size: 15px;
+        transition: background 0.2s;
+        border-radius: 6px;
+    }
+
+    .menu-list li a:hover,
+    .menu-list li a.active {
+        background: #00c6ff;
+        color: #000;
+    }
+
+    /* ===============================
+    PAGE HEADER
+    ================================ */
+    .page-header {
+        margin-top: 80px;
+        text-align: center;
+        padding: 40px 20px;
+        background: linear-gradient(135deg, #0b1c2c, #003b66);
+        color: #fff;
+    }
+
+    .page-header h1 {
+        font-size: 2.2rem;
+        margin-bottom: 10px;
+    }
+
+    /* ===============================
+    ORGANIZATION CARD
+    ================================ */
+    .org-container {
+        display: flex;
+        justify-content: center;
+        padding: 40px 20px;
+    }
+
+    .org-card {
+        background: #fff;
+        width: 320px;
+        text-align: center;
+        border-radius: 12px;
+        padding: 20px;
+        text-decoration: none;
+        color: inherit;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .org-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    }
+
+    .org-card img {
+        width: 120px;
+        margin: 0 auto 15px;
+    }
+
+    .org-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 5px;
+    }
+
+    .org-card .year {
+        font-size: 0.9rem;
+        color: #777;
+    }
+
+    .org-card .desc {
+        font-size: 0.95rem;
+        margin-top: 10px;
+    }
+
+    /* ===============================
+    SECTIONS
+    ================================ */
+    section h2 {
+        text-align: center;
+        margin: 40px 0 20px;
+        font-size: 1.8rem;
+    }
+
+    hr {
+        border: none;
+        height: 1px;
+        background: #ddd;
+        margin: 40px 0;
+    }
+
+    /* ===============================
+    ACHIEVEMENTS
+    ================================ */
+    .carousel {
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .slide {
+        background: #fff;
+        padding: 20px 30px;
+        border-radius: 10px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        font-weight: 500;
+    }
+
+    /* ===============================
+    OFFICERS
+    ================================ */
+    .officer-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 25px;
+        padding: 20px 40px 40px;
+    }
+
+    .officer-card {
+        background: #fff;
+        border-radius: 12px;
+        text-align: center;
+        padding: 20px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        transition: transform 0.3s;
+    }
+
+    .officer-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .officer-card img {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin: 0 auto 15px;
+    }
+
+    .officer-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .officer-card p {
+        font-size: 0.9rem;
+        color: #666;
+    }
+
+    /* ===============================
+    SOCIAL MEDIA
+    ================================ */
+    .social-media {
+        text-align: center;
+        padding: 30px;
+    }
+
+    .social-media a {
+        text-decoration: none;
+        background: #1877f2;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 25px;
+        font-weight: 500;
+        transition: background 0.3s;
+    }
+
+    .social-media a:hover {
+        background: #0d5ddc;
+    }
+
+    /* ===============================
+    RESPONSIVE
+    ================================ */
+    @media (max-width: 600px) {
+        .page-header h1 {
+            font-size: 1.8rem;
+        }
+
+        .officer-container {
+            padding: 20px;
+        }
+    }
