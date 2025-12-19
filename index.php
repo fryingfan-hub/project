@@ -384,7 +384,7 @@ a {
   <div class="contacts-content">
     <h2>Contacts</h2>
     <p>09XX-XXX-XXXX</p>
-    <p>example@email.com</p>
+    <p>example@email.comm</p>
   </div>
 </section>
 
