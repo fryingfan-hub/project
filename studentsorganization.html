@@ -1,70 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Organizations</title>
-    <link rel="stylesheet" href="css/studentsorganization.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Organizations</title>
+<link rel="stylesheet" href="css/studentsorganization.css">
 </head>
 
 <body>
 
-<!-- ========== OVERLAY ========== -->
+<!-- OVERLAY -->
 <div id="overlay"></div>
 
-<!-- ========== SIDE MENU ========== -->
+<!-- SIDE MENU -->
 <nav id="sideMenu" aria-label="Side Navigation">
     <button id="closeMenu" aria-label="Close Menu">&times;</button>
-
     <ul class="menu-list">
         <li><a href="faculty.html">Faculty</a></li>
         <li><a href="studentsorganization.html">Organizations</a></li>
         <li><a href="news.html">News</a></li>
         <li><a href="achievement.html" class="active">Achievements</a></li>
         <li><a href="inquires.php">Inquiries</a></li>
-        <li><a href="admin.html">Admin</a></li>
+        <li><a href="Admin.php">Admin</a></li>
     </ul>
 </nav>
 
-<!-- ========== TOP NAV ========== -->
+<!-- TOP NAV -->
 <header class="top-nav">
-    <a href="index.html" class="logo">
-        <span class="it">IT</span><span class="tab">Tab</span>
-    </a>
+    <a href="index.html" class="logo"><span class="it">IT</span><span class="tab">Tab</span></a>
+    <nav class="nav-links">
+    <a href="faculty.html">Faculty</a>
+    <a href="studentsorganization.html">Organizations</a>
+    <a href="news.html">News</a>
+    <a href="achievement.html">Achievements</a>
+    <a href="inquires.php">Inquiries</a>
+    <a href="Admin.php">Admin</a>
+</nav>
+
     <button class="hamburger" id="openMenu" aria-label="Open Menu">&#9776;</button>
 </header>
 
-<!-- ========== PAGE HEADER ========== -->
+<!-- PAGE HEADER -->
 <section class="page-header">
     <h1>Student Organizations</h1>
     <p>Showcasing student involvement and community</p>
 </section>
 
-<!-- ===== ORGANIZATION CARDS ===== -->
+<!-- ORGANIZATION CARDS -->
 <section class="org-container">
     <a href="org-details.html" class="org-card">
         <img src="https://image2url.com/images/1765893062842-79f2054d-4655-4d46-a296-0cd7e9c67c6e.jpg" alt="PSITS Logo">
         <h3>PSITS</h3>
         <p class="year">Established: 2025</p>
-        <p class="desc">
-            A community of tech enthusiasts who explore innovation and programming.
-        </p>
+        <p class="desc">A community of tech enthusiasts who explore innovation and programming.</p>
     </a>
 </section>
 
 <hr>
 
-<!-- ===== ACHIEVEMENTS ===== -->
+
+<!-- ACHIEVEMENTS -->
 <section class="carousel-section">
     <h2>Achievements</h2>
     <div class="carousel">
         <div class="slides">
-            <div class="slide">Creation of PSITS Officers</div>
+            <div class="slide"><h3>Creation of PSITS Officers</h3></div>
+            
+            <p>The PSITS officers in CTU Tabuelan are chosen to lead and guide IT students. They organize activities, promote teamwork, </p>
+            <p>and serve as role models, helping students grow academically and personally while strengthening the IT community.</p>
         </div>
     </div>
 </section>
 
+
 <hr>
+
 
 <!-- ===== OFFICERS ===== -->
 <section class="officers">
@@ -123,32 +133,28 @@
 
 <hr>
 
-<!-- ===== SOCIAL MEDIA ===== -->
+<!-- SOCIAL MEDIA -->
 <section class="social-media">
     <h2>Follow Us</h2>
-    <div class="links">
-        <a href="https://www.facebook.com/profile.php?id=61551016140658" target="_blank">
-            Facebook
-        </a>
-    </div>
+    <a href="https://www.facebook.com/profile.php?id=61551016140658" target="_blank">Facebook</a>
 </section>
 
-<!-- ========== MENU SCRIPT ========== -->
+<!-- MENU SCRIPT -->
 <script>
-    const openMenu = document.getElementById("openMenu");
-    const closeMenu = document.getElementById("closeMenu");
-    const sideMenu = document.getElementById("sideMenu");
-    const overlay = document.getElementById("overlay");
+const openMenu = document.getElementById("openMenu");
+const closeMenu = document.getElementById("closeMenu");
+const sideMenu = document.getElementById("sideMenu");
+const overlay = document.getElementById("overlay");
 
-    openMenu.onclick = () => {
-        sideMenu.classList.add("active");
-        overlay.classList.add("active");
-    };
+openMenu.onclick = () => {
+    sideMenu.classList.add("active");
+    overlay.classList.add("active");
+};
 
-    closeMenu.onclick = overlay.onclick = () => {
-        sideMenu.classList.remove("active");
-        overlay.classList.remove("active");
-    };
+closeMenu.onclick = overlay.onclick = () => {
+    sideMenu.classList.remove("active");
+    overlay.classList.remove("active");
+};
 </script>
 
 </body>
