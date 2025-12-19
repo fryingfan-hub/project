@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>TabIT — Admin Dashboard (Full)</title>
+  <title>IT Tab — Admin Dashboard (Full)</title>
   <style>
     :root{--blue:#0A2A5A;--yellow:#FFC300;--muted:#f4f7fb}
     *{box-sizing:border-box}
@@ -51,18 +51,31 @@
   <div id="loginOverlay" class="overlay" style="display:none">
     <div class="login">
       <h2>Admin Login</h2>
-      <p class="hint">Demo credentials: <strong>admin</strong> / <strong>Admin123</strong></p>
+      
       <div style="margin-top:12px">
         <label>Username</label>
         <input id="loginUser" type="text" placeholder="admin">
       </div>
       <div style="margin-top:10px">
         <label>Password</label>
-        <input id="loginPass" type="password" placeholder="password">
+        <input style="width:100%;
+  padding:11px;
+  border:1px solid #d6dcea;
+  border-radius:6px;
+  font-size:14px;" id="loginPass" type="password" placeholder="password">
       </div>
       <div style="margin-top:14px;display:flex;gap:8px;justify-content:flex-end">
         <button id="loginBtn" class="btn">Login</button>
         <button id="demoFill" class="btn ghost">Fill Demo</button>
+        <button style=" padding:10px 14px;
+  border-radius:6px;
+  border:none;
+  background:#FFC300;
+  color:#0A2A5A;
+  font-weight:700;
+  cursor:pointer;  background:transparent;
+  border:1px solid #ddd;
+  color:#333;" onclick="window.location.href='index.php'">HOME</button>
       </div>
       <p id="loginError" style="color:#c33;margin-top:10px;display:none">Invalid credentials</p>
     </div>
@@ -70,7 +83,7 @@
 
   <div class="app">
     <aside class="sidebar">
-      <div class="brand"><div class="logo">IT</div><div><h1>TabIT Admin</h1><div class="small">Manage content & users</div></div></div>
+      <div class="brand"><div class="logo">IT</div><div><h1>ITTab Admin</h1><div class="small">Manage content & users</div></div></div>
 
       <nav>
         <button data-view="dashboard" class="active">Dashboard</button>
@@ -79,6 +92,7 @@
         <button data-view="cms">CMS Content</button>
         <button data-view="posts">Posts</button>
         <button data-view="inbox">Inbox</button>
+        <button onclick="window.location.href='view_inquiries.php'">All Inquiries</button>
         <button data-view="admins">Admin Users</button>
         <button data-view="settings">Settings</button>
       </nav>
@@ -118,7 +132,7 @@
 
 <script>
 // Single-file admin system (frontend-only) using localStorage to simulate backend
-const ADMIN_USER='admin', ADMIN_PASS='Admin123'
+const ADMIN_USER='reyngie01', ADMIN_PASS='Admin123'
 const DEFAULT = {
   faculty: [],
   orgs: [],

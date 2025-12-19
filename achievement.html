@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ITTab – Achievements Timeline</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* BASE */
+* { margin:0; padding:0; box-sizing:border-box; font-family:"Poppins", sans-serif; }
+body { background:#0d1b2a; color:#fff; transition: background 0.3s ease; }
+a { text-decoration:none; color:inherit; }
+
+/* NAVBAR */
+.top-nav { position:fixed; top:0; left:0; right:0; height:70px; background:#06121f; padding:0 28px; display:flex; justify-content:space-between; align-items:center; z-index:1000; box-shadow:0 4px 12px rgba(0,0,0,0.45); }
+.logo { font-size:28px; font-weight:800; }
+.logo .it { color:#F2B632; } .logo .tab { margin-left:4px; }
+.hamburger { background:none; border:none; font-size:30px; color:#fff; cursor:pointer; }
+
+/* SIDE MENU */
+#overlay { position:fixed; inset:0; background:rgba(0,0,0,0.5); display:none; z-index:998; }
+#sideMenu { position:fixed; top:0; right:-300px; width:300px; height:100vh; background:#0f2a3a; padding:24px; transition:right 0.3s ease; z-index:999; }
+#closeMenuBtn { background:none; border:none; font-size:34px; color:#fff; cursor:pointer; }
+.menu-list { list-style:none; margin-top:30px; }
+.menu-list li { margin:18px 0; }
+.menu-list a { font-size:18px; font-weight:600; }
+.menu-list a:hover, .menu-list a.active { color:#F2B632; }
+
+/* PAGE TITLE */
+.page-title { text-align:center; font-size:52px; font-weight:800; margin-top:100px; margin-bottom:40px; }
+.page-title span { color:#F2B632; }
+
+/* FILTER BUTTONS */
+.filter-btns { text-align:center; margin-bottom:40px; }
+.filter-btns button { background:#06121f; color:#fff; border:2px solid #F2B632; padding:8px 18px; margin:0 8px; border-radius:6px; font-weight:600; cursor:pointer; transition:0.3s; }
+.filter-btns button.active, .filter-btns button:hover { background:#F2B632; color:#06121f; }
+
+/* TIMELINE */
+.timeline { position:relative; max-width:900px; margin:0 auto; padding:0 20px; }
+.timeline::after { content:''; position:absolute; width:4px; background:#F2B632; top:0; bottom:0; left:50%; margin-left:-2px; }
+.timeline-item { padding:20px 30px; position:relative; width:50%; transition:transform 0.5s ease; cursor:pointer; }
+.timeline-item.left { left:0; }
+.timeline-item.right { left:50%; }
+.timeline-item::before { content:''; position:absolute; width:20px; height:20px; border-radius:50%; top:20px; z-index:1; background:#F2B632; animation:glow 2s infinite alternate; }
+.timeline-item.right::before { left:-10px; }
+.timeline-item.left::before { right:-10px; }
+
+@keyframes glow { 0% { box-shadow:0 0 6px #F2B632; } 100% { box-shadow:0 0 20px #F2B632; } }
+
+/* CONTENT */
+.timeline-item .content { background:rgba(4,15,23,0.85); padding:20px; border-radius:20px; opacity:0; transform:translateX(-50px); transition:all 0.6s ease; position:relative; }
+.timeline-item.right .content { transform:translateX(50px); }
+.timeline-item.show .content { opacity:1; transform:translateX(0); }
+.timeline-item h2 { font-size:28px; font-weight:800; margin-bottom:10px; }
+.timeline-item span { color:#F2B632; font-size:14px; }
+.timeline-item p { margin-top:10px; line-height:1.5; }
+.timeline-item img { width:100%; max-width:300px; margin-top:15px; border-radius:15px; transition:transform 0.4s ease, filter 0.4s ease; }
+.timeline-item:hover img { transform:scale(1.05); filter:brightness(1.05); }
+
+/* TOOLTIP */
+.timeline-item .tooltip { position:absolute; top:-10px; left:50%; transform:translateX(-50%) scale(0); background:#F2B632; color:#06121f; padding:8px 12px; border-radius:8px; font-size:14px; white-space:nowrap; pointer-events:none; transition: transform 0.3s ease, opacity 0.3s ease; opacity:0; }
+.timeline-item:hover .tooltip { transform:translateX(-50%) scale(1); opacity:1; }
+
+/* HOVER EFFECT */
+.timeline-item:hover { transform:translateY(-5px); }
+
+/* MODAL */
+.modal { display:none; position:fixed; z-index:2000; left:0; top:0; width:100%; height:100%; overflow:auto; background:rgba(0,0,0,0.85); transition:opacity 0.4s ease; }
+.modal.show { display:block; opacity:1; }
+.modal-content { background:#06121f; margin:50px auto; padding:30px; border-radius:20px; max-width:700px; color:#fff; position:relative; transform:translateY(-50px); opacity:0; transition:transform 0.4s ease, opacity 0.4s ease; }
+.modal.show .modal-content { transform:translateY(0); opacity:1; }
+.modal-content img { width:100%; max-width:400px; border-radius:15px; margin-top:15px; transition: transform 0.3s ease; }
+.close-modal { position:absolute; top:15px; right:20px; color:#F2B632; font-size:28px; cursor:pointer; }
+
+/* MODAL NAV BUTTONS */
+.modal-nav { position:absolute; top:50%; transform:translateY(-50%); font-size:36px; color:#F2B632; cursor:pointer; user-select:none; padding:10px; }
+.modal-prev { left:10px; }
+.modal-next { right:10px; }
+
+@media screen and (max-width:768px){
+  .timeline::after { left:20px; }
+  .timeline-item { width:100%; padding-left:50px; padding-right:25px; margin-bottom:40px; }
+  .timeline-item.right { left:0; }
+  .timeline-item::before { left:10px; }
+  .timeline-item.right::before { left:10px; }
+  .timeline-item .content { transform:translateX(0); }
+  .timeline-item .tooltip { left:calc(100% + 10px); top:0; transform:scale(0); }
+  .timeline-item:hover .tooltip { transform:scale(1); }
+  .modal-content { margin:20px auto; width:90%; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="top-nav">
+  <div class="logo"><span class="it">IT</span><span class="tab">Tab</span></div>
+  <button class="hamburger" onclick="openMenu()">☰</button>
+</header>
+
+<div id="overlay" onclick="closeMenu()"></div>
+<div id="sideMenu">
+  <button id="closeMenuBtn" onclick="closeMenu()">×</button>
+  <ul class="menu-list">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="faculty.html">Faculty</a></li>
+    <li><a href="studentsorganization.html">Organizations</a></li>
+    <li><a href="achievement.html">Achievements</a></li>
+    <li><a href="news.html">News</a></li>
+    <li><a href="inquires.php">Inquiries</a></li>
+    <li><a href="Admin.php">Admin</a></li>
+  </ul>
+</div>
+
+<h1 class="page-title">Student <span>Achievements</span></h1>
+
+<div class="filter-btns">
+  <button class="active" onclick="filterYear('all')">All</button>
+  <button onclick="filterYear('2024')">2024</button>
+  <button onclick="filterYear('2023')">2023</button>
+</div>
+
+<div class="timeline">
+  <div class="timeline-item left fade-slide" data-year="2024" data-title="Best in Capstone Project" data-date="December 2024" data-desc="BSIT students earned the Best in Capstone Project award for their innovative system." data-img="img/capstone.png">
+    <div class="content">
+      <div class="tooltip">Capstone Project Award</div>
+      <h2>Best in Capstone Project</h2>
+      <span>December 2024</span>
+      <p>BSIT students earned the Best in Capstone Project award.</p>
+      <img src="img/capstone.png" alt="Capstone Award">
+    </div>
+  </div>
+
+  <div class="timeline-item right fade-slide" data-year="2023" data-title="IT Quiz Bowl Finalist" data-date="March 2023" data-desc="The BSIT team reached the final round of the regional IT Quiz Bowl." data-img="img/quizbowl.png">
+    <div class="content">
+      <div class="tooltip">IT Quiz Bowl Finalist</div>
+      <h2>IT Quiz Bowl Finalist</h2>
+      <span>March 2023</span>
+      <p>The BSIT team reached the final round of the regional IT Quiz Bowl.</p>
+      <img src="img/quizbowl.png" alt="Quiz Bowl">
+    </div>
+  </div>
+
+  <div class="timeline-item left fade-slide" data-year="2023" data-title="Sinulog Champion" data-date="January 2023" data-desc="CTU-Tabuelan students won the championship title during Sinulog Udays." data-img="img/sinulog.png">
+    <div class="content">
+      <div class="tooltip">Sinulog Champion</div>
+      <h2>Sinulog Champion</h2>
+      <span>January 2023</span>
+      <p>CTU-Tabuelan students won the championship title during Sinulog Udays.</p>
+      <img src="img/sinulog.png" alt="Sinulog Champion">
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div id="achievementModal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal" onclick="closeModal()">×</span>
+    <span class="modal-nav modal-prev" onclick="prevModal()">&#10094;</span>
+    <span class="modal-nav modal-next" onclick="nextModal()">&#10095;</span>
+    <h2 id="modalTitle"></h2>
+    <span id="modalDate"></span>
+    <p id="modalDesc"></p>
+    <img id="modalImg" src="" alt="">
+  </div>
+</div>
+
+<script>
+// MENU
+function openMenu(){ document.getElementById("sideMenu").style.right="0"; document.getElementById("overlay").style.display="block"; }
+function closeMenu(){ document.getElementById("sideMenu").style.right="-300px"; document.getElementById("overlay").style.display="none"; }
+
+// FADE-SLIDE ANIMATION
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{ if(entry.isIntersecting) entry.target.classList.add("show"); });
+});
+document.querySelectorAll(".fade-slide").forEach(el=>observer.observe(el));
+
+// FILTER BY YEAR
+function filterYear(year){
+  const items = document.querySelectorAll('.timeline-item');
+  document.querySelectorAll('.filter-btns button').forEach(btn=>btn.classList.remove('active'));
+  event.target.classList.add('active');
+  items.forEach(item=>{
+    if(year==='all' || item.dataset.year===year) item.style.display='block';
+    else item.style.display='none';
+  });
+}
+
+// MODAL GALLERY
+const modal = document.getElementById("achievementModal");
+const modalTitle = document.getElementById("modalTitle");
+const modalDate = document.getElementById("modalDate");
+const modalDesc = document.getElementById("modalDesc");
+const modalImg = document.getElementById("modalImg");
+
+const timelineItems = Array.from(document.querySelectorAll('.timeline-item'));
+let currentIndex = 0;
+
+function openModal(index){
+  const item = timelineItems[index];
+  currentIndex = index;
+  modalTitle.textContent = item.dataset.title;
+  modalDate.textContent = item.dataset.date;
+  modalDesc.textContent = item.dataset.desc;
+  modalImg.src = item.dataset.img;
+  modal.style.display = 'block';
+  setTimeout(()=> modal.classList.add('show'), 10);
+}
+
+timelineItems.forEach((item, i)=>{
+  item.addEventListener('click', ()=> openModal(i));
+});
+
+function closeModal(){
+  modal.classList.remove('show');
+  setTimeout(()=> modal.style.display='none', 400);
+}
+
+// NEXT / PREVIOUS
+function nextModal(){ currentIndex = (currentIndex + 1) % timelineItems.length; openModal(currentIndex); }
+function prevModal(){ currentIndex = (currentIndex - 1 + timelineItems.length) % timelineItems.length; openModal(currentIndex); }
+
+// KEYBOARD & CLICK OUTSIDE
+window.addEventListener('click', e => { if(e.target === modal) closeModal(); });
+window.addEventListener('keydown', e => {
+  if(e.key === "Escape") closeModal();
+  if(modal.style.display === 'block'){
+    if(e.key === "ArrowRight") nextModal();
+    if(e.key === "ArrowLeft") prevModal();
+  }
+});
+
+// SWIPE SUPPORT
+let touchStartX = 0, touchEndX = 0;
+modal.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; });
+modal.addEventListener('touchend', e => {
+  touchEndX = e.changedTouches[0].screenX;
+  if(touchEndX < touchStartX - 50) nextModal();
+  if(touchEndX > touchStartX + 50) prevModal();
+});
+</script>
+
+</body>
+</html>
