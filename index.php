@@ -315,10 +315,10 @@ a {
   <button id="closeMenu" onclick="closeMenu()">×</button>
   <ul class="menu-list">
     <li><a href="faculty.html">Faculty</a></li>
-    <li><a href="#">Organizations</a></li>
-    <li><a href="#">News</a></li>
-    <li><a href="#">Achievements</a></li>
-    <li><a href="#">Inquiries</a></li>
+    <li><a href="studentsorganization.html">Organizations</a></li>
+    <li><a href="news.php">News</a></li>
+    <li><a href="achievement.html">Achievements</a></li>
+    <li><a href="inquires.php">Inquiries</a></li>
   </ul>
 </div>
 
